@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/theming/styles.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -7,8 +9,10 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Screen'),
+        title: Text('Login Screen',
+        ),
       ),
     );
   }
+
 }

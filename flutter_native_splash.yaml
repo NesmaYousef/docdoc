@@ -1,0 +1,30 @@
+flutter_native_splash:
+  # Steps to make this work:
+  # 1. Customize the parameters below.
+  # 2. run the following command in the terminal:
+  # dart run flutter_native_splash:create
+  # or if you place this not in pubspec.yaml and not in flutter_native_splash.yaml:
+  # dart run flutter_native_splash:create -p ../your-filepath.yaml
+  # 3. voila, done!
+
+
+  #======================================================================
+
+  color: "#ffffff"  ##====================================[REQUIRED]==========
+
+  image:                assets/images/splash.png
+
+  fullscreen: true                # default false
+
+  #========================================================================
+
+  # what we did above won't affect Android 12 and newer at all. they have different
+  # handling concept. visit https://developer.android.com/guide/topics/ui/splash-screen
+
+  #! ANDROID 12+ configuration:
+  android_12:
+    # background color
+    color: "#ffffff"
+    image: assets/images/splash.png
+
+    icon_background_color: "#111111"
