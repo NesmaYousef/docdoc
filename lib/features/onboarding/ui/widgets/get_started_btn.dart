@@ -14,12 +14,11 @@ class GetStartedBtn extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 30.w),
       child: TextButton(
-
           onPressed: (){
             context.pushNamed(Routes.loginScreen);
           },
         style: ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll(ColorManager.mainBlue),
+          backgroundColor: WidgetStatePropertyAll(ColorsManager.mainBlue),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: WidgetStatePropertyAll(
             const Size(double.infinity, 52),
