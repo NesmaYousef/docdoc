@@ -262,12 +262,12 @@ $FailureCopyWith<T, Failure<T>> get copyWith => _$FailureCopyWithImpl<T, Failure
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Failure<T>&&const DeepCollectionEquality().equals(other.errorHandler, errorHandler));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Failure<T>&&(identical(other.errorHandler, errorHandler) || other.errorHandler == errorHandler));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(errorHandler));
+int get hashCode => Object.hash(runtimeType,errorHandler);
 
 @override
 String toString() {
@@ -299,9 +299,9 @@ class _$FailureCopyWithImpl<T,$Res>
 
 /// Create a copy of ApiResult
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? errorHandler = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
   return _then(Failure<T>(
-freezed == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
+null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
 as ErrorHandler,
   ));
 }
