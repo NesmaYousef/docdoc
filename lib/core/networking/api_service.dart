@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:docdoc/features/signup/data/models/signup_request_body.dart';
+import 'package:docdoc/features/signup/data/models/signup_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/login/data/models/login_request_body.dart';
@@ -12,8 +14,8 @@ abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
   @POST(ApiConstants.login)
-  Future<LoginResponse> login(
-      @Body() LoginRequestBody loginRequestBody,
-      );
+  Future<LoginResponse> login(@Body() LoginRequestBody loginRequestBody);
 
+  @POST(ApiConstants.signup)
+  Future<SignupResponse> signup(@Body() SignupRequestBody signUpRequestBody);
 }

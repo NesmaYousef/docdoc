@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/theming/styles.dart';
-import '../data/models/login_request_body.dart';
+import '../../../../core/theming/styles.dart';
+import '../../data/models/login_request_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -65,13 +65,7 @@ class LoginScreen extends StatelessWidget {
 
   void validateThenLogin(BuildContext context) {
     if(context.read<LoginCubit>().formKey.currentState!.validate()){
-      context.read<LoginCubit>().emitLoginStates(
-          LoginRequestBody(
-              email: context.read<LoginCubit>().emailController.text,
-              password: context.read<LoginCubit>().passwordController.text,
-      ),
-      );
-
+      context.read<LoginCubit>().emitLoginStates();
     }
   }
 }
