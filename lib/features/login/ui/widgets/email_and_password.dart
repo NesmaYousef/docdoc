@@ -59,7 +59,8 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   Widget build(BuildContext context) {
     return Form(
       key: context.read<LoginCubit>().formKey,
-      child: Column(
+      child:
+      Column(
         children: [
           AppTextFormField(
             hintText: 'Email',

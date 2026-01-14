@@ -34,12 +34,7 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(30),
-                AppTextButton(
-                  horizontalPadding: 30,
-                    buttonText: 'Get Started',
-                    textStyle: TextStyles.font16WhiteMedium,
-                    onPressed: (){}),
-                verticalSpace(30),
+
 
                 const GetStartedBtn(),
               ],

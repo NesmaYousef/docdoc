@@ -4,6 +4,17 @@ allprojects {
         mavenCentral()
     }
 }
+flavorDimensions += "default"
+productFlavors {
+    create("development") {
+        dimension = "default"
+        applicationIdSuffix = ".development"
+    }
+    create("production") {
+        dimension = "default"
+        applicationIdSuffix = ".production"
+    }
+}
 
 val newBuildDir: Directory =
     rootProject.layout.buildDirectory
