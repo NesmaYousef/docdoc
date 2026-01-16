@@ -35,7 +35,6 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 verticalSpace(30),
 
-
                 const GetStartedBtn(),
               ],
             ),
