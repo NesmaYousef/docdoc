@@ -36,4 +36,3 @@ jobs:
         run: |
           bundle exec fastlane android Firebase_Distribution
         working-directory: android
-
