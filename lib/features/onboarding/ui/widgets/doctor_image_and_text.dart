@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DoctorImageAndText extends StatelessWidget {
-  const DoctorImageAndText({Key? key}) : super(key: key);
+  const DoctorImageAndText({super.key});
 
   @override
   Widget build(BuildContext context) {

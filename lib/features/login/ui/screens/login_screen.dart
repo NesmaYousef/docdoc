@@ -10,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/styles.dart';
-import '../../data/models/login_request_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

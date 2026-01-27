@@ -1,4 +1,3 @@
-import 'package:docdoc/features/login/data/models/login_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part  'login_state.freezed.dart';

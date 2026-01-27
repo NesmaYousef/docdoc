@@ -1,10 +1,8 @@
 import 'package:docdoc/core/helpers/extensions.dart';
-import 'package:docdoc/core/networking/api_error_handler.dart';
 import 'package:docdoc/core/routing/routes.dart';
 import 'package:docdoc/core/theming/colors.dart';
 import 'package:docdoc/features/login/logic/cubit/login_cubit.dart';
 import 'package:docdoc/features/login/logic/cubit/login_state.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

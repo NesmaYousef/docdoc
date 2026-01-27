@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/theming/styles.dart';
 
 class DocLogoAndName extends StatelessWidget {
-  const DocLogoAndName({Key? key}) : super(key: key);
+  const DocLogoAndName({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
 
 class GetStartedBtn extends StatelessWidget {
-  const GetStartedBtn({Key? key}) : super(key: key);
+  const GetStartedBtn({super.key});
 
   @override
   Widget build(BuildContext context) {

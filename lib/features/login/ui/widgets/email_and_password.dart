@@ -1,6 +1,5 @@
 import 'package:docdoc/core/helpers/app_regex.dart';
 import 'package:docdoc/features/login/logic/cubit/login_cubit.dart';
-import 'package:docdoc/features/login/logic/cubit/login_state.dart';
 import 'package:docdoc/features/login/ui/widgets/password_validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
