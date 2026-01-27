@@ -7,19 +7,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
 
 class GetStartedBtn extends StatelessWidget {
-  const GetStartedBtn({Key? key}) : super(key: key);
+  const GetStartedBtn({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 30.w),
       child: TextButton(
-
           onPressed: (){
             context.pushNamed(Routes.loginScreen);
           },
         style: ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll(ColorManager.mainBlue),
+          backgroundColor: WidgetStatePropertyAll(ColorsManager.mainBlue),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: WidgetStatePropertyAll(
             const Size(double.infinity, 52),
