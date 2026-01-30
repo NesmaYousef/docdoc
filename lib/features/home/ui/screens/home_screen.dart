@@ -2,7 +2,11 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../../core/helpers/spacing.dart';
 import '../widgets/doctor_blue_container.dart';
+import '../widgets/doctors_list_view.dart';
+import '../widgets/doctors_speciality_list_view.dart';
+import '../widgets/doctors_speciality_see_all.dart';
 import '../widgets/home_top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,6 +26,12 @@ class HomeScreen extends StatelessWidget {
             children: [
               HomeTopBar(),
               DoctorBlueContainer(),
+              verticalSpace(24),
+              const DoctorsSpecialitySeeAll(),
+              verticalSpace(4),
+              DoctorsSpecialityListView(),
+              verticalSpace(8),
+              DoctorsListView(),
             ],
           ),
         ),
