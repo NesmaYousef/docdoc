@@ -42,23 +42,22 @@ class HomeScreen extends StatelessWidget {
                       child: Center(child: CircularProgressIndicator()),
                     ),
                     specializationSuccess: (specializationsResponseModel) {
-                      var specializationsList = specializationsResponseModel.specializationDataList;
-                      return    Expanded(
+                      var specializationsList =
+                          specializationsResponseModel.specializationDataList;
+                      return Expanded(
                         child: Column(
                           children: [
                             DoctorsSpecialityListView(
-                              specializationsList: specializationsList??[],
+                              specializationsList: specializationsList ?? [],
                             ),
                             verticalSpace(8),
                             DoctorsListView(
-
+                              doctorsList: specializationsList?[0]?.doctorsList,
                             ),
                           ],
                         ),
                       );
-                    }
-
-                    ,
+                    },
                     specializationError: (error) => const SizedBox.shrink(),
                     orElse: () => const SizedBox.shrink(),
                   );

@@ -132,41 +132,84 @@ class ErrorHandler implements Exception {
     }
   }
 }
-
 ApiErrorModel _handleError(DioException error) {
   switch (error.type) {
     case DioExceptionType.connectionTimeout:
       return DataSource.CONNECT_TIMEOUT.getFailure();
+
     case DioExceptionType.sendTimeout:
       return DataSource.SEND_TIMEOUT.getFailure();
+
     case DioExceptionType.receiveTimeout:
       return DataSource.RECIEVE_TIMEOUT.getFailure();
+
     case DioExceptionType.badResponse:
-      if (error.response != null &&
-          error.response?.statusCode != null &&
-          error.response?.statusMessage != null) {
-        return ApiErrorModel.fromJson(error.response!.data);
-      } else {
-        return DataSource.DEFAULT.getFailure();
-      }
     case DioExceptionType.unknown:
-      if (error.response != null &&
-          error.response?.statusCode != null &&
-          error.response?.statusMessage != null) {
-        return ApiErrorModel.fromJson(error.response!.data);
-      } else {
-        return DataSource.DEFAULT.getFailure();
+      final response = error.response;
+
+      if (response?.data is Map<String, dynamic>) {
+        return ApiErrorModel.fromJson(
+          response!.data as Map<String, dynamic>,
+        );
       }
+
+      if (response?.data is List) {
+        return ApiErrorModel(
+          message: 'Unexpected server response',
+          data: response!.data,
+          code: response.statusCode,
+        );
+      }
+
+      return ApiErrorModel(
+        message: error.message ?? ResponseMessage.DEFAULT,
+        code: response?.statusCode,
+      );
+
     case DioExceptionType.cancel:
       return DataSource.CANCEL.getFailure();
+
     case DioExceptionType.connectionError:
-      return DataSource.DEFAULT.getFailure();
     case DioExceptionType.badCertificate:
-      return DataSource.DEFAULT.getFailure();
-    case DioExceptionType.badResponse:
       return DataSource.DEFAULT.getFailure();
   }
 }
+
+
+// ApiErrorModel _handleError(DioException error) {
+//   switch (error.type) {
+//     case DioExceptionType.connectionTimeout:
+//       return DataSource.CONNECT_TIMEOUT.getFailure();
+//     case DioExceptionType.sendTimeout:
+//       return DataSource.SEND_TIMEOUT.getFailure();
+//     case DioExceptionType.receiveTimeout:
+//       return DataSource.RECIEVE_TIMEOUT.getFailure();
+//     case DioExceptionType.badResponse:
+//       if (error.response != null &&
+//           error.response?.statusCode != null &&
+//           error.response?.statusMessage != null) {
+//         return ApiErrorModel.fromJson(error.response!.data);
+//       } else {
+//         return DataSource.DEFAULT.getFailure();
+//       }
+//     case DioExceptionType.unknown:
+//       if (error.response != null &&
+//           error.response?.statusCode != null &&
+//           error.response?.statusMessage != null) {
+//         return ApiErrorModel.fromJson(error.response!.data);
+//       } else {
+//         return DataSource.DEFAULT.getFailure();
+//       }
+//     case DioExceptionType.cancel:
+//       return DataSource.CANCEL.getFailure();
+//     case DioExceptionType.connectionError:
+//       return DataSource.DEFAULT.getFailure();
+//     case DioExceptionType.badCertificate:
+//       return DataSource.DEFAULT.getFailure();
+//     case DioExceptionType.badResponse:
+//       return DataSource.DEFAULT.getFailure();
+//   }
+// }
 
 class ApiInternalStatus {
   static const int SUCCESS = 0;
