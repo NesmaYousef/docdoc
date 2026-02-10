@@ -1,33 +1,53 @@
-
-import 'package:docdoc/core/helpers/constants.dart';
-import 'package:docdoc/core/helpers/shared_pref_helper.dart';
-import 'package:docdoc/core/networking/api_result.dart';
-import 'package:docdoc/features/home/data/repos/home_repo.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'home_state.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/networking/api_error_handler.dart';
+import '../../../../core/networking/api_result.dart';
+import '../../data/models/specializations_response_model.dart';
 
+import '../../data/repos/home_repo.dart';
+import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
+  HomeCubit(this._homeRepo) : super(const HomeState.initial());
 
-  HomeCubit(this._homeRepo) : super(HomeState.initial());
+  List<SpecializationsData?>? specializationsList = [];
 
-  void getSpecializations() async{
-    emit(HomeState.specializationLoading());
-
-   // debugPrint('3- : ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}');
-
+  void getSpecializations() async {
+    emit(const HomeState.specializationLoading());
     final response = await _homeRepo.getSpecializations();
-
     response.when(
-        success: (specializationsResponseModel){
-          emit(HomeState.specializationSuccess(specializationsResponseModel));
-        },
-        failure: (error){
-          emit(HomeState.specializationError(error: error.apiErrorModel.message??""));
-        },);
+      success: (specializationsResponseModel) {
+        specializationsList =
+            specializationsResponseModel.specializationDataList ?? [];
 
+        // getting the doctors list for the first specialization by default.
+        getDoctorsList(specializationId: specializationsList?.first?.id);
 
+        emit(HomeState.specializationSuccess(
+            specializationsResponseModel.specializationDataList));
+      },
+      failure: (errorHandler) {
+        emit(HomeState.specializationError(errorHandler));
+      },
+    );
+  }
+
+  void getDoctorsList({required int? specializationId}) {
+    List<Doctors?>? doctorsList =
+    getDoctorsListBySpecializationId(specializationId);
+
+    if (!doctorsList.isNullOrEmpty()) {
+      emit(HomeState.doctorsSuccess(doctorsList));
+    } else {
+      emit(HomeState.doctorsError(ErrorHandler.handle('No doctors found')));
+    }
+  }
+
+  /// returns the list of doctors based on the specialization id
+  List<Doctors?>? getDoctorsListBySpecializationId(specializationId) {
+    return specializationsList
+        ?.firstWhere((specialization) => specialization?.id == specializationId)
+        ?.doctorsList;
   }
 }

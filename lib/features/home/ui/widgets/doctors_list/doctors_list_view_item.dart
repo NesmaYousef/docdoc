@@ -2,7 +2,7 @@ import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theming/styles.dart';
+import '../../../../../core/theming/styles.dart';
 
 class DoctorsListViewItem extends StatelessWidget {
   final Doctors? doctorsModel;
@@ -18,8 +18,8 @@ class DoctorsListViewItem extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(12.r),
             child: Image.asset(
               'assets/images/doc1.png',
-              height: 120.h,
-              width: 110.w,
+              height: 100.h,
+              width: 100.w,
               fit: BoxFit.cover,
             ),
           ),

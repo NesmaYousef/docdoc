@@ -1,4 +1,4 @@
-import 'package:docdoc/features/home/ui/widgets/doctors_list_view_item.dart';
+import 'package:docdoc/features/home/ui/widgets/doctors_list/doctors_list_view_item.dart';
 import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:flutter/material.dart';
 
