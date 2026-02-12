@@ -31,32 +31,8 @@ class SignupCubit extends Cubit<SignupState> {
     );
     response.when(
       success: (response) => emit(SignupState.signupSuccess(response)),
-      failure: (error) {
-        final errorsMap = error.apiErrorModel.data;
-        final allErrors = errorsMap?.values
-            .expand((e) => e)
-            .join('\n')
-            ?? '';
-        emit(
-          SignupState.signupError(
-            error: allErrors,
-          ),
-        );
-
-        //To show only the first error
-        // final errorsMap = error.apiErrorModel.data;
-        // final firstError = errorsMap?.values
-        //     .expand((e) => e)
-        //     .firstOrNull ?? '';
-        // emit(SignupState.signupError(error: firstError));
-        // old
-        // emit(
-        // SignupState.signupError(
-        // error: error.apiErrorModel.data?['name']?.first ?? '',
-        // );
-      }
-
-
-    );
+        failure: (apiErrorModel) {
+          emit(SignupState.signupError(apiErrorModel));
+        });
   }
 }

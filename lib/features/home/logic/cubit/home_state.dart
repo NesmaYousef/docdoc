@@ -1,7 +1,7 @@
 import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/networking/api_error_handler.dart';
+import '../../../../core/networking/api_error_model.dart';
 
 part 'home_state.freezed.dart';
 
@@ -12,9 +12,10 @@ class HomeState<T> with  _$HomeState <T>{
   // Specializations
   const factory HomeState.specializationLoading() = SpecializationLoading;
   const factory HomeState.specializationSuccess(List<SpecializationsData?>? specializationDataList) = SpecializationSuccess<T>;
-  const factory HomeState.specializationError(ErrorHandler errorHandler) = SpecializationError;
+  const factory HomeState.specializationsError(ApiErrorModel apiErrorModel) =
+ SpecializationError;
 
   // Doctors
   const factory HomeState.doctorsSuccess(List<Doctors?>? doctorsList) = DoctorsSuccess<T>;
-  const factory HomeState.doctorsError(ErrorHandler errorHandler) = DoctorsError;
+  const factory HomeState.doctorsError() = DoctorsError;
 }

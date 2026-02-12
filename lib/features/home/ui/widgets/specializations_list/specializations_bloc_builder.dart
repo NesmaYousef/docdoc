@@ -27,7 +27,7 @@ class SpecializationsBlocBuilder extends StatelessWidget {
               var specializationsList = specializationDataList;
               return setupSuccess(specializationsList);
             },
-            specializationError: (errorHandler) => setupError(),
+            specializationsError: (errorHandler) => setupError(errorHandler),
             orElse: () {
               return const SizedBox.shrink();
             });
@@ -54,7 +54,8 @@ class SpecializationsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupError() {
-    return const SizedBox.shrink();
+  Widget setupError(errorHandler) {
+    return Center(child: Text(errorHandler.message ?? 'An error occurred'));
   }
+
 }
