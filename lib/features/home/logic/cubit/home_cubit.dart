@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helpers/extensions.dart';
-import '../../../../core/networking/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../data/models/specializations_response_model.dart';
 
@@ -15,7 +14,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   void getSpecializations() async {
     emit(const HomeState.specializationLoading());
-    final response = await _homeRepo.getSpecializations();
+    final response = await _homeRepo.getSpecialization();
     response.when(
       success: (specializationsResponseModel) {
         specializationsList =
@@ -27,8 +26,8 @@ class HomeCubit extends Cubit<HomeState> {
         emit(HomeState.specializationSuccess(
             specializationsResponseModel.specializationDataList));
       },
-      failure: (errorHandler) {
-        emit(HomeState.specializationError(errorHandler));
+      failure: (apiErrorModel) {
+        emit(HomeState.specializationsError(apiErrorModel));
       },
     );
   }
@@ -40,12 +39,12 @@ class HomeCubit extends Cubit<HomeState> {
     if (!doctorsList.isNullOrEmpty()) {
       emit(HomeState.doctorsSuccess(doctorsList));
     } else {
-      emit(HomeState.doctorsError(ErrorHandler.handle('No doctors found')));
+      emit(const HomeState.doctorsError());
     }
   }
 
   /// returns the list of doctors based on the specialization id
-  List<Doctors?>? getDoctorsListBySpecializationId(specializationId) {
+  getDoctorsListBySpecializationId(specializationId) {
     return specializationsList
         ?.firstWhere((specialization) => specialization?.id == specializationId)
         ?.doctorsList;

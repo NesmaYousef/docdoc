@@ -18,18 +18,20 @@ class HomeScreen extends StatelessWidget {
         child: Container(
           width: double.infinity,
           margin: EdgeInsets.fromLTRB(20, 16, 20, 28),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HomeTopBar(),
-              DoctorBlueContainer(),
-              verticalSpace(24),
-              const DoctorsSpecialitySeeAll(),
-              verticalSpace(4),
-              SpecializationsBlocBuilder(),
-              verticalSpace(14),
-              DoctorsBlocBuilder(),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HomeTopBar(),
+                DoctorBlueContainer(),
+                verticalSpace(24),
+                const DoctorsSpecialitySeeAll(),
+                verticalSpace(4),
+                SpecializationsBlocBuilder(),
+                verticalSpace(14),
+                DoctorsBlocBuilder(),
+              ],
+            ),
           ),
         ),
       ),

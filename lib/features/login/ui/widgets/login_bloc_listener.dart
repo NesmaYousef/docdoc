@@ -6,6 +6,7 @@ import 'package:docdoc/features/login/logic/cubit/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/networking/api_error_model.dart';
 import '../../../../core/theming/styles.dart';
 
 class LoginBlocListener extends StatelessWidget {
@@ -30,8 +31,8 @@ class LoginBlocListener extends StatelessWidget {
             context.pop();
             context.pushNamed(Routes.homeScreen);
           },
-          error: (error) {
-            setupErrorState(context, error);
+          error: (apiErrorModel) {
+            setupErrorState(context, apiErrorModel);
           },
         );
       },
@@ -39,19 +40,29 @@ class LoginBlocListener extends StatelessWidget {
     );
   }
 
-  void setupErrorState(BuildContext context, String error) {
+  void setupErrorState(BuildContext context, ApiErrorModel apiErrorModel) {
     context.pop();
     showDialog(
-      barrierDismissible: true,
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: ColorsManager.moreLighterGray,
-        icon: const Icon(Icons.error, color: Colors.red, size: 32),
-        content: Text(error, style: TextStyles.font15DarkBlueMedium),
+        icon: const Icon(
+          Icons.error,
+          color: Colors.red,
+          size: 32,
+        ),
+        content: Text(
+          apiErrorModel.getAllErrorMessages(),
+          style: TextStyles.font15DarkBlueMedium,
+        ),
         actions: [
           TextButton(
-            onPressed: () => context.pop(),
-            child: Text('Got it', style: TextStyles.font14BlueSemiBold),
+            onPressed: () {
+              context.pop();
+            },
+            child: Text(
+              'Got it',
+              style: TextStyles.font14BlueSemiBold,
+            ),
           ),
         ],
       ),

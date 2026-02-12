@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/networking/api_error_model.dart';
+
 part  'signup_state.freezed.dart';
 
 @freezed
@@ -7,6 +9,6 @@ part  'signup_state.freezed.dart';
   const factory SignupState.initialSignup() = _InitialSignup;
   const factory SignupState.signupLoading() = SignupLoading;
   const factory SignupState.signupSuccess(T data) = SignupSuccess<T>;
-  const factory SignupState.signupError({required String error}) = SignupError;
+  const factory SignupState.signupError(ApiErrorModel apiErrorModel) = SignupError;
 }
 
