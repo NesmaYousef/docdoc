@@ -16,11 +16,16 @@ class DoctorsListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 16.h),
+      decoration: BoxDecoration(
+        color: ColorsManager.lighterGray,
+        borderRadius: BorderRadius.circular(12.r),
+        
+      ),
       child: Row(
         children: [
           CachedNetworkImage(
             imageUrl:
-            "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
+                "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
             progressIndicatorBuilder: (context, url, downloadProgress) {
               return Shimmer.fromColors(
                 baseColor: ColorsManager.lightGray,
@@ -36,26 +41,13 @@ class DoctorsListViewItem extends StatelessWidget {
                 ),
               );
             },
-            errorWidget: (context, url, error) => Container(
-              width: 110.w,
-              height: 120.h,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12.0),
-                color: ColorsManager.lightGray,
-              ),
-              child: const Icon(Icons.error, color: Colors.red),
-            ),
             imageBuilder: (context, imageProvider) => Container(
               width: 110.w,
               height: 120.h,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(12.0),
-                image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.cover,
-                ),
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
               ),
             ),
           ),
@@ -69,7 +61,6 @@ class DoctorsListViewItem extends StatelessWidget {
                   style: TextStyles.font18DarkBlueBold,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
-
                 ),
                 verticalSpace(5),
                 Text(

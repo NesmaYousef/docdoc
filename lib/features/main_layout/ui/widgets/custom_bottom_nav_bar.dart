@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../data/models/bottom_nav_item_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../core/theming/colors.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -11,96 +14,55 @@ class CustomBottomNavBar extends StatelessWidget {
     required this.onTap,
   });
 
-  static const double _fabSpace = 40;
-
-  static const List<BottomNavItemModel> _items = [
-    BottomNavItemModel(
-      icon: Icons.home_outlined,
-      activeIcon: Icons.home,
-      label: 'Home',
-    ),
-    BottomNavItemModel(
-      icon: Icons.chat_bubble_outline,
-      activeIcon: Icons.chat_bubble,
-      label: 'Messages',
-    ),
-    BottomNavItemModel(
-      icon: Icons.calendar_today_outlined,
-      activeIcon: Icons.calendar_today,
-      label: 'Schedule',
-    ),
-    BottomNavItemModel(
-      icon: Icons.person_outline,
-      activeIcon: Icons.person,
-      label: 'Profile',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      color: Colors.white,
-      notchMargin: 8,
-      elevation: 10,
-      child: SizedBox(
-        height: 100,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ..._buildItems(0, 2),
-            const SizedBox(width: _fabSpace),
-            ..._buildItems(2, 4),
-          ],
-        ),
+    return Container(
+      height: 80.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 2,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _buildNavItem(index: 0, icon: 'home'),
+          _buildNavItem(index: 1, icon: 'message'),
+          // Space for the large FAB
+          SizedBox(width: 60.w),
+          _buildNavItem(index: 2, icon: 'calendar'),
+          _buildNavItem(index: 3, icon: 'message'),
+        ],
       ),
     );
   }
 
-  List<Widget> _buildItems(int start, int end) {
-    return List.generate(
-      end - start,
-          (i) {
-        final index = start + i;
-        final item = _items[index];
-        final isActive = currentIndex == index;
-        return InkWell(
-          borderRadius: BorderRadius.circular(12),
-          onTap: () => onTap(index),
-          child: Padding(
-            padding:
-            const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AnimatedScale(
-                  scale: isActive ? 1.2 : 1.0,
-                  duration: const Duration(milliseconds: 250),
-                  child: Icon(
-                    isActive ? item.activeIcon : item.icon,
-                    color:
-                    isActive ? Colors.blue : Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                AnimatedDefaultTextStyle(
-                  duration:
-                  const Duration(milliseconds: 250),
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: isActive
-                        ? FontWeight.w600
-                        : FontWeight.w400,
-                    color:
-                    isActive ? Colors.blue : Colors.grey,
-                  ),
-                  child: Text(item.label),
-                ),
-              ],
-            ),
+  Widget _buildNavItem({required int index, required String icon}) {
+    final isActive = currentIndex == index;
+
+    return GestureDetector(
+      onTap: () => onTap(index),
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        width: 60.w,
+        height: 60.h,
+        alignment: Alignment.center,
+        child: SvgPicture.asset(
+          'assets/svgs/$icon.svg',
+          colorFilter: ColorFilter.mode(
+            isActive ? ColorsManager.mainBlue : Colors.black,
+
+            BlendMode.srcIn,
           ),
-        );
-      },
+          width: 24.w,
+          height: 24.h,
+        ),
+      ),
     );
   }
 }

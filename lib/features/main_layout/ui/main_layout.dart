@@ -36,7 +36,8 @@ class _MainLayoutState extends State<MainLayout> {
       extendBody: true,
       body: IndexedStack(index: currentIndex, children: _screens),
       floatingActionButton: MainFAB(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: currentIndex,
         onTap: _onNavTap,
