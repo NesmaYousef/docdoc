@@ -15,7 +15,7 @@ class SpecialityGridShimmerLoading extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: 18.w,
         mainAxisSpacing: 28.h,
-        childAspectRatio: 0.78, // ⬅️ must match real grid
+        childAspectRatio: 0.78, 
       ),
       itemCount: 12,
       itemBuilder: (context, index) {
