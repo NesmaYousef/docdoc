@@ -39,25 +39,26 @@ class AppRouter {
       case Routes.mainLayout:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (_) => HomeCubit(getIt())..getSpecializations(),
+            create: (_) => getIt<HomeCubit>()..getSpecializations(),
             child: MainLayout(),
           ),
         );
 
       case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (context) => HomeScreen(),
-        );
+        return MaterialPageRoute(builder: (context) => HomeScreen());
 
       case Routes.specializationsScreen:
         return MaterialPageRoute(
-          builder: (context) => SpecializationsScreen(),
+          builder: (context) {
+            return BlocProvider(
+              create: (_) => getIt<HomeCubit>()..getSpecializations(),
+              child: const SpecializationsScreen(),
+            );
+          },
         );
 
       case Routes.doctorDetailsScreen:
-        return MaterialPageRoute(
-          builder: (context) => DoctorDetailsScreen(),
-        );
+        return MaterialPageRoute(builder: (context) => DoctorDetailsScreen());
 
       default:
         return MaterialPageRoute(

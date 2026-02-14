@@ -1,6 +1,8 @@
 import 'package:docdoc/features/home/ui/widgets/doctors_list/doctors_shimmer_loading.dart';
 import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_list_view.dart';
-import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_shimmer_loading.dart';
+import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_list_shimmer_loading.dart';
+import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_grid_view.dart';
+import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_grid_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,7 +11,9 @@ import '../../../logic/cubit/home_cubit.dart';
 import '../../../logic/cubit/home_state.dart';
 
 class SpecializationsBlocBuilder extends StatelessWidget {
-  const SpecializationsBlocBuilder({super.key});
+  final bool gridView; // Add parameter for grid view
+  
+  const SpecializationsBlocBuilder({super.key, this.gridView = false});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +39,12 @@ class SpecializationsBlocBuilder extends StatelessWidget {
     );
   }
 
-  /// shimmer loading for specializations and doctors
+  /// shimmer loading for specializations (and doctors for home screen)
   Widget setupLoading() {
+    if (gridView) {
+      return const SpecialityGridShimmerLoading();
+    }
+    // Horizontal list shimmer for home screen
     return Expanded(
       child: Column(
         children: [
@@ -49,6 +57,13 @@ class SpecializationsBlocBuilder extends StatelessWidget {
   }
 
   Widget setupSuccess(specializationsList) {
+    if (gridView) {
+      // Grid view for specializations screen
+      return SpecialityGridView(
+        specializationsList: specializationsList ?? [],
+      );
+    }
+    // Horizontal list for home screen
     return SpecialityListView(
       specializationsList: specializationsList ?? [],
     );
