@@ -2,7 +2,7 @@ import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theming/styles.dart';
+import '../../../../../core/theming/styles.dart';
 
 class DoctorBlueContainer extends StatelessWidget {
   const DoctorBlueContainer({super.key});

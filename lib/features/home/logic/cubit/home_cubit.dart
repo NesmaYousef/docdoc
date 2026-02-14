@@ -12,6 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<SpecializationsData?>? specializationsList = [];
 
+  // Specializations
   void getSpecializations() async {
     emit(const HomeState.specializationLoading());
     final response = await _homeRepo.getSpecialization();
@@ -32,6 +33,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
+  // Doctors
   void getDoctorsList({required int? specializationId}) {
     List<Doctors?>? doctorsList =
     getDoctorsListBySpecializationId(specializationId);
@@ -44,7 +46,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   /// returns the list of doctors based on the specialization id
-  getDoctorsListBySpecializationId(specializationId) {
+  List<Doctors?>? getDoctorsListBySpecializationId(specializationId) {
     return specializationsList
         ?.firstWhere((specialization) => specialization?.id == specializationId)
         ?.doctorsList;
