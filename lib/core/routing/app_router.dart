@@ -1,5 +1,6 @@
 import 'package:docdoc/core/di/dependency_injection.dart';
 import 'package:docdoc/core/routing/routes.dart';
+import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:docdoc/features/home/logic/cubit/home_cubit.dart';
 import 'package:docdoc/features/home/ui/screens/home_screen.dart';
 import 'package:docdoc/features/home/ui/screens/specializations_screen.dart';
@@ -36,17 +37,21 @@ class AppRouter {
             child: SignupScreen(),
           ),
         );
+
+        
       case Routes.mainLayout:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
+        return MaterialPageRoute(builder: (context) => BlocProvider(
             create: (_) => getIt<HomeCubit>()..getSpecializations(),
             child: MainLayout(),
           ),
         );
 
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (context) => HomeScreen());
-
+        return MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+          
+        );
+        
       case Routes.specializationsScreen:
         return MaterialPageRoute(
           builder: (context) {
@@ -57,8 +62,12 @@ class AppRouter {
           },
         );
 
-      case Routes.doctorDetailsScreen:
-        return MaterialPageRoute(builder: (context) => DoctorDetailsScreen());
+        case Routes.doctorDetailsScreen:
+        final doctor = arguments as Doctors?;
+        return MaterialPageRoute(
+          builder: (context) => DoctorDetailsScreen(doctorModel: doctor),
+        );
+     
 
       default:
         return MaterialPageRoute(
