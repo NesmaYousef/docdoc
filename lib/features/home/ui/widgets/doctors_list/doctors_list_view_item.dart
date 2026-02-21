@@ -12,7 +12,8 @@ import '../../../data/models/specializations_response_model.dart';
 
 class DoctorsListViewItem extends StatelessWidget {
   final Doctors? doctorsModel;
-  const DoctorsListViewItem({super.key, this.doctorsModel});
+  final String? specialtyName;
+  const DoctorsListViewItem({super.key, this.doctorsModel, this.specialtyName});
 
   @override
   Widget build(BuildContext context) {
@@ -73,20 +74,20 @@ class DoctorsListViewItem extends StatelessWidget {
                 children: [
                   Text(
                     doctorsModel?.name ?? 'Name',
-                    style: TextStyles.font18DarkBlueBold,
+                    style: TextStyles.font16BlackBold, 
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
                   verticalSpace(5),
                   Text(
-                    '${doctorsModel?.degree} | ${doctorsModel?.phone}',
+                    '$specialtyName | ${doctorsModel?.degree}',
                     style: TextStyles.font12GrayMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
                   verticalSpace(5),
                   Text(
-                    doctorsModel?.email ?? 'Email',
+                    '${doctorsModel?.email} | ${doctorsModel?.phone}',
                     style: TextStyles.font12GrayMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,

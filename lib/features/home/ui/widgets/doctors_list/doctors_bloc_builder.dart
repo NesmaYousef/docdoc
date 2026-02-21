@@ -1,3 +1,7 @@
+import 'package:docdoc/core/helpers/extensions.dart';
+import 'package:docdoc/core/helpers/spacing.dart';
+import 'package:docdoc/core/routing/routes.dart';
+import 'package:docdoc/core/theming/styles.dart';
 import 'package:docdoc/features/home/logic/cubit/home_cubit.dart';
 import 'package:docdoc/features/home/logic/cubit/home_state.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +19,10 @@ class DoctorsBlocBuilder extends StatelessWidget {
           current is DoctorsSuccess || current is DoctorsError,
       builder: (context, state) {
         return state.maybeWhen(
-          doctorsSuccess: (doctorsList) => setupSuccess(doctorsList),
+          doctorsSuccess: (doctorsList) {
+            final specialtyName = context.read<HomeCubit>().selectedSpecialization?.name ?? 'Doctors';
+            return setupSuccess(doctorsList, specialtyName, context);
+          },
           doctorsError: () => setupError(),
           orElse: () => const SizedBox.shrink(),
         );
@@ -24,9 +31,41 @@ class DoctorsBlocBuilder extends StatelessWidget {
   }
 }
 
-Widget setupSuccess(doctorsList) {
-  return DoctorsListView(
-    doctorsList: doctorsList,
+Widget setupSuccess(doctorsList, String specialtyName, BuildContext context) {
+  return Expanded(
+    child: Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              '$specialtyName Doctors',
+              style: TextStyles.font18DarkBlueSemiBold,
+            ),
+            const Spacer(),
+            GestureDetector(
+              onTap: () {
+                context.pushNamed(
+                  Routes.specialityDoctorsScreen,
+                  arguments: {
+                    'specialtyName': specialtyName,
+                    'doctorsList': doctorsList,
+                  },
+                );
+              },
+              child: Text(
+                'See All',
+                style: TextStyles.font12BlueRegular,
+              ),
+            ),
+          ],
+        ),
+        verticalSpace(14),
+        DoctorsListView(
+          doctorsList: doctorsList,
+          specialtyName: specialtyName,
+        ),
+      ],
+    ),
   );
 }
 

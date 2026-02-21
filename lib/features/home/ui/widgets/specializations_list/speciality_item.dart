@@ -1,3 +1,5 @@
+import 'package:docdoc/core/helpers/extensions.dart';
+import 'package:docdoc/core/routing/routes.dart';
 import 'package:docdoc/core/theming/colors.dart';
 import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:flutter/material.dart';
@@ -24,32 +26,38 @@ class SpecialityItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isGridView) {
-      return _buildGridItem();
+      return _buildGridItem(context);
     }
     return _buildListItem();
   }
 
   // Grid view item (for specializations screen)
-  Widget _buildGridItem() {
+  Widget _buildGridItem(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Container(
-          width: 72.w,
-          height: 72.h,
-          decoration: BoxDecoration(
-            color: ColorsManager.lightBlue,
-            borderRadius: BorderRadius.circular(50.r),
-          ),
-          child: Center(
+        GestureDetector(
+          onTap: () {
+            context.pushNamed(
+              Routes.specialityDoctorsScreen,
+              arguments: {
+                'specialtyName': specializationsData?.name ?? 'Specialization',
+                'doctorsList': specializationsData?.doctorsList ?? [],
+              },
+            );
+          },
+          child: CircleAvatar(
+            radius: 36.w,
+            backgroundColor: ColorsManager.lightBlue,
             child: SvgPicture.asset(
               'assets/svgs/doctor_speciality.svg',
-              width: 32.w,
-              height: 32.h,
+              width: 38.w,
+              height: 38.h,
               fit: BoxFit.contain,
             ),
           ),
         ),
+
         verticalSpace(10),
         Text(
           specializationsData?.name ?? 'Specialization',

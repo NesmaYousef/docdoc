@@ -16,18 +16,19 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          margin: EdgeInsets.fromLTRB(20, 16, 20, 0),
+          margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeTopBar(),
-              DoctorBlueContainer(),
+              const HomeTopBar(),
+              const DoctorBlueContainer(),
               verticalSpace(24),
               const DoctorsSpecialitySeeAll(),
               verticalSpace(4),
-              SpecializationsBlocBuilder(),
+              const SpecializationsBlocBuilder(),
               verticalSpace(14),
-              DoctorsBlocBuilder(),
+
+              const DoctorsBlocBuilder(),
             ],
           ),
         ),

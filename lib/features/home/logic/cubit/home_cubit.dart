@@ -9,8 +9,8 @@ import 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
   HomeCubit(this._homeRepo) : super(const HomeState.initial());
-
   List<SpecializationsData?>? specializationsList = [];
+  SpecializationsData? selectedSpecialization;
 
   // Specializations
   void getSpecializations() async {
@@ -22,7 +22,10 @@ class HomeCubit extends Cubit<HomeState> {
             specializationsResponseModel.specializationDataList ?? [];
 
         // getting the doctors list for the first specialization by default.
-        getDoctorsList(specializationId: specializationsList?.first?.id);
+        if (specializationsList?.isNotEmpty == true) {
+          selectedSpecialization = specializationsList?.first;
+          getDoctorsList(specializationId: selectedSpecialization?.id);
+        }
 
         emit(HomeState.specializationSuccess(
             specializationsResponseModel.specializationDataList));
@@ -35,6 +38,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   // Doctors
   void getDoctorsList({required int? specializationId}) {
+    selectedSpecialization = specializationsList?.firstWhere(
+            (specialization) => specialization?.id == specializationId,
+        orElse: () => null);
+
     List<Doctors?>? doctorsList =
     getDoctorsListBySpecializationId(specializationId);
 

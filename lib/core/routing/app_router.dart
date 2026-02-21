@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/home/ui/screens/doctor_details_screen.dart';
+import '../../features/home/ui/screens/speciality_doctors_screen.dart';
 import '../../features/login/ui/screens/login_screen.dart';
 import '../../features/onboarding/ui/onboarding_screen.dart';
 import '../../features/signup/ui/screens/signup_screen.dart';
@@ -48,8 +49,10 @@ class AppRouter {
 
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => HomeScreen(),
-          
+          builder: (context)=> BlocProvider(
+            create: (_) => getIt<HomeCubit>()..getSpecializations(),
+            child: HomeScreen(),
+          ),
         );
         
       case Routes.specializationsScreen:
@@ -60,6 +63,15 @@ class AppRouter {
               child: const SpecializationsScreen(),
             );
           },
+        );
+
+      case Routes.specialityDoctorsScreen:
+        final args = arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (context) => SpecialityDoctorsScreen(
+            doctorsList: args?['doctorsList'],
+            specialtyName: args?['specialtyName'] ?? 'Doctors',
+          ),
         );
 
         case Routes.doctorDetailsScreen:
