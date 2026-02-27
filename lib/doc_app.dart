@@ -1,5 +1,5 @@
 import 'package:docdoc/core/helpers/constants.dart';
-import 'package:docdoc/core/theming/colors.dart';
+import 'package:docdoc/core/theme/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:docdoc/core/routing/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

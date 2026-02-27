@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
-import '../../../../../../../core/theming/colors.dart';
+import '../../../../../core/theme/colors_manager.dart';
 
 class SpecialityShimmerLoading extends StatelessWidget {
   const SpecialityShimmerLoading({super.key});

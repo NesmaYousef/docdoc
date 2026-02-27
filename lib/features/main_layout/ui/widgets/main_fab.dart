@@ -1,4 +1,4 @@
-import 'package:docdoc/core/theming/colors.dart';
+import 'package:docdoc/core/theme/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,7 +9,7 @@ class MainFAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 12.h), // Adjust as needed
+      margin: EdgeInsets.only(top: 12.h),
       width: 80.w,
       height: 80.h,
       decoration: BoxDecoration(

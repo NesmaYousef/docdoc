@@ -2,7 +2,7 @@ import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theme/text_styles.dart';
 
 class DoctorBlueContainer extends StatelessWidget {
   const DoctorBlueContainer({super.key});
@@ -34,34 +34,42 @@ class DoctorBlueContainer extends StatelessWidget {
                   textAlign: TextAlign.start,
                 ),
                 verticalSpace(16),
-                Expanded(
-                  child:  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(48.r),
-                      ),
-
-                    ),
-                    child: Text('Find Nearby',style: TextStyles.font12BlueRegular,),
-                  ),
-                ),
+                nearbyButton(),
 
               ],
             ),
           ),
-          Positioned(
-            right: 16,
-            bottom: 0,
-            child: Image.asset(
-              'assets/images/doctor.png',
-              height: 200.h,
-            ),
-          ),
+          doctorImage(),
 
         ],
       )
     );
+  }
+
+  Expanded nearbyButton() {
+    return Expanded(
+                child:  ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(48.r),
+                    ),
+
+                  ),
+                  child: Text('Find Nearby',style: TextStyles.font12BlueRegular,),
+                ),
+              );
+  }
+
+  Positioned doctorImage() {
+    return Positioned(
+          right: 16,
+          bottom: 0,
+          child: Image.asset(
+            'assets/images/doctor.png',
+            height: 200.h,
+          ),
+        );
   }
 }

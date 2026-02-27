@@ -1,7 +1,7 @@
 import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/networking/api_error_model.dart';
+import '../../../../core/network/api_error_model.dart';
 
 part 'home_state.freezed.dart';
 

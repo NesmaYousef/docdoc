@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class DoctorsListView extends StatelessWidget {
   final List<Doctors?>? doctorsList;
-  const DoctorsListView({super.key,  this.doctorsList});
+  final String specialtyName;
+  const DoctorsListView({super.key, this.doctorsList, required this.specialtyName});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,10 @@ class DoctorsListView extends StatelessWidget {
       child: ListView.builder(
         itemCount: doctorsList?.length,
         itemBuilder: (context, index) {
-          return DoctorsListViewItem(doctorsModel:  doctorsList?[index],);
+          return DoctorsListViewItem(
+            doctorsModel: doctorsList?[index],
+            specialtyName: specialtyName,
+          );
         },
       ),
     );
