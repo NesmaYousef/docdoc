@@ -1,6 +1,6 @@
 import 'package:docdoc/core/helpers/spacing.dart';
-import 'package:docdoc/core/theming/colors.dart';
-import 'package:docdoc/core/theming/styles.dart';
+import 'package:docdoc/core/theme/colors_manager.dart';
+import 'package:docdoc/core/theme/text_styles.dart';
 import 'package:docdoc/core/widgets/app_text_button.dart';
 import 'package:docdoc/core/widgets/custom_app_bar.dart';
 import 'package:docdoc/features/home/data/models/specializations_response_model.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helpers/extensions.dart';
-import '../../../../core/networking/api_result.dart';
+import '../../../../core/network/api_result.dart';
 import '../../data/models/specializations_response_model.dart';
 
 import '../../data/repos/home_repo.dart';

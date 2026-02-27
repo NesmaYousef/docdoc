@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/text_styles.dart';
 import '../../../data/models/specializations_response_model.dart';
 
 class DoctorsListViewItem extends StatelessWidget {

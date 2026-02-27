@@ -56,7 +56,7 @@ class SpecializationsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupSuccess(specializationsList) {
+  Widget setupSuccess(dynamic specializationsList) {
     if (gridView) {
       // Grid view for specializations screen
       return SpecialityGridView(
@@ -69,7 +69,7 @@ class SpecializationsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupError(errorHandler) {
+  Widget setupError(dynamic errorHandler) {
     return Center(child: Text(errorHandler.message ?? 'An error occurred'));
   }
 

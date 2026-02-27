@@ -4,17 +4,17 @@ import 'package:docdoc/features/home/data/models/specializations_response_model.
 import 'package:docdoc/features/home/logic/cubit/home_cubit.dart';
 import 'package:docdoc/features/home/ui/screens/home_screen.dart';
 import 'package:docdoc/features/home/ui/screens/specializations_screen.dart';
-import 'package:docdoc/features/login/logic/cubit/login_cubit.dart';
+import 'package:docdoc/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:docdoc/features/main_layout/ui/main_layout.dart';
-import 'package:docdoc/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:docdoc/features/auth/signup/logic/cubit/signup_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/home/ui/screens/doctor_details_screen.dart';
 import '../../features/home/ui/screens/speciality_doctors_screen.dart';
-import '../../features/login/ui/screens/login_screen.dart';
+import '../../features/auth/login/ui/screens/login_screen.dart';
 import '../../features/onboarding/ui/onboarding_screen.dart';
-import '../../features/signup/ui/screens/signup_screen.dart';
+import '../../features/auth/signup/ui/screens/signup_screen.dart';
 
 class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {

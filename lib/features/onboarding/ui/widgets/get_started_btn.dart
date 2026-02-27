@@ -1,6 +1,6 @@
 import 'package:docdoc/core/helpers/extensions.dart';
-import 'package:docdoc/core/theming/colors.dart';
-import 'package:docdoc/core/theming/styles.dart';
+import 'package:docdoc/core/theme/colors_manager.dart';
+import 'package:docdoc/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
