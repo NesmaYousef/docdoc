@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:docdoc/features/auth/signup/data/models/signup_request_body.dart';
-import 'package:docdoc/features/auth/signup/data/models/signup_response.dart';
-import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../features/appointments/data/models/appointments_response_model.dart';
+import '../../features/appointments/data/models/store_appointment_request_body.dart';
 import '../../features/auth/login/data/models/login_request_body.dart';
 import '../../features/auth/login/data/models/login_response.dart';
+import '../../features/auth/signup/data/models/signup_request_body.dart';
+import '../../features/auth/signup/data/models/signup_response.dart';
+import '../../features/home/data/models/specializations_response_model.dart';
 import 'api_constants.dart';
+import 'api_response.dart';
 
 part 'api_service.g.dart';
 
@@ -26,5 +29,12 @@ abstract class ApiServices {
   Future<SpecializationsResponseModel> getSpecialization();
 
 
+// Appointments Module
+  @GET(ApiConstants.getAllAppointments)
+  Future<ApiResponse<List<AppointmentModel>>> getAllAppointments();
 
+  @POST(ApiConstants.storeAppointment)
+  Future<ApiResponse<AppointmentModel>> storeAppointment(
+      @Body() StoreAppointmentRequestBody appointmentRequestBody,
+      );
 }

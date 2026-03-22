@@ -1,6 +1,7 @@
 import 'package:docdoc/features/main_layout/ui/widgets/main_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:docdoc/features/main_layout/ui/widgets/custom_bottom_nav_bar.dart';
+import '../../appointments/ui/screens/appointments_screen.dart';
 import '../../home/ui/screens/home_screen.dart';
 
 class MainLayout extends StatefulWidget {
@@ -20,7 +21,7 @@ class _MainLayoutState extends State<MainLayout> {
     _screens = const [
       HomeScreen(),
       Placeholder(),
-      Placeholder(),
+      AppointmentsScreen(),
       Placeholder(),
     ];
   }

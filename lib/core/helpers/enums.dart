@@ -1,0 +1,1 @@
+enum AppointmentType { upcoming, completed, cancelled }

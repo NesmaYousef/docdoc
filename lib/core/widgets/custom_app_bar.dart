@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final Widget? leading;
   final Widget? trailing;
+  final VoidCallback? onLeadingTap;
 
   const CustomAppBar({
     super.key,
@@ -16,6 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.height = 56.0,
     this.leading,
     this.trailing,
+    this.onLeadingTap,
   });
 
   @override
@@ -35,7 +37,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: InkWell(
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  if (onLeadingTap != null) {
+                    onLeadingTap!();
+                  } else {
+                    Navigator.pop(context);
+                  }
+                },
                 borderRadius: BorderRadius.circular(12.r),
                 child: Container(
                   width: 40.w,

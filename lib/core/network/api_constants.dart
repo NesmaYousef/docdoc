@@ -4,14 +4,16 @@ class ApiConstants {
 // Auth Module
   static const String login = "auth/login";
   static const String signup = "auth/register";
-  
+
 // Home Module
   static const String specializationsEP = "specialization/index";
 
-
+// Appointments Module
+  static const String getAllAppointments = "appointment/index";
+  static const String storeAppointment = "appointment/store";
 }
 
-class ApiErrors {
+  class ApiErrors {
   static const String badRequestError = "badRequestError";
   static const String noContent = "noContent";
   static const String forbiddenError = "forbiddenError";

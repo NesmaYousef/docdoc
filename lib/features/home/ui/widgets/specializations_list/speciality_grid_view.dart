@@ -10,9 +10,8 @@ class SpecialityGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        physics: const BouncingScrollPhysics(),
+    return GridView.builder(
+      physics: const BouncingScrollPhysics(),
 
         padding: EdgeInsets.only(top: 12.h, bottom: 24.h),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -29,7 +28,7 @@ class SpecialityGridView extends StatelessWidget {
             isGridView: true,
           );
         },
-      ),
+
     );
   }
 }

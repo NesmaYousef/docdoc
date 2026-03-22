@@ -3,6 +3,7 @@ import 'package:docdoc/core/theme/colors_manager.dart';
 import 'package:docdoc/core/theme/text_styles.dart';
 import 'package:docdoc/core/widgets/app_text_button.dart';
 import 'package:docdoc/core/widgets/custom_app_bar.dart';
+import 'package:docdoc/core/routing/routes.dart';
 import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:docdoc/features/home/ui/widgets/doctors_list/doctors_list_view_item.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,11 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen>
               textStyle: TextStyles.font16WhiteSemiBold,
               backgroundColor: ColorsManager.mainBlue,
               onPressed: () {
-                // Handle make appointment
+                Navigator.pushNamed(
+                  context,
+                  Routes.bookAppointmentScreen,
+                  arguments: widget.doctorModel,
+                );
               },
             ),
           ),

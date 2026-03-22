@@ -10,10 +10,9 @@ class DoctorsShimmerLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.only(bottom: 16.h),
             child: Row(
@@ -81,7 +80,7 @@ class DoctorsShimmerLoading extends StatelessWidget {
             ),
           );
         },
-      ),
+
     );
   }
 }
