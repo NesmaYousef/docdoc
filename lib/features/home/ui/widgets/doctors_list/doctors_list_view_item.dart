@@ -23,17 +23,6 @@ class DoctorsListViewItem extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 16.h),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.r),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
         child: Row(
           children: [
             CachedNetworkImage(
@@ -80,14 +69,14 @@ class DoctorsListViewItem extends StatelessWidget {
                   ),
                   verticalSpace(5),
                   Text(
-                    '$specialtyName | ${doctorsModel?.degree}',
+                    '${doctorsModel?.degree} | ${doctorsModel?.phone}',
                     style: TextStyles.font12GrayMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
                   verticalSpace(5),
                   Text(
-                    '${doctorsModel?.email} | ${doctorsModel?.phone}',
+                    '${doctorsModel?.email} ',
                     style: TextStyles.font12GrayMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,

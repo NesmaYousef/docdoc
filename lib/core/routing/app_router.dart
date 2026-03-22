@@ -15,6 +15,11 @@ import '../../features/home/ui/screens/speciality_doctors_screen.dart';
 import '../../features/auth/login/ui/screens/login_screen.dart';
 import '../../features/onboarding/ui/onboarding_screen.dart';
 import '../../features/auth/signup/ui/screens/signup_screen.dart';
+import '../../features/appointments/logic/cubit/book_appointment_cubit.dart';
+import '../../features/appointments/ui/screens/book_appointment_screen.dart';
+
+import '../../features/appointments/ui/screens/booking_confirmed_screen.dart';
+import '../../features/appointments/data/models/appointments_response_model.dart';
 
 class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {
@@ -41,18 +46,12 @@ class AppRouter {
 
         
       case Routes.mainLayout:
-        return MaterialPageRoute(builder: (context) => BlocProvider(
-            create: (_) => getIt<HomeCubit>()..getSpecializations(),
-            child: MainLayout(),
-          ),
+        return MaterialPageRoute(builder: (context) => MainLayout(),
         );
 
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (context)=> BlocProvider(
-            create: (_) => getIt<HomeCubit>()..getSpecializations(),
-            child: HomeScreen(),
-          ),
+          builder: (context)=> HomeScreen(),
         );
         
       case Routes.specializationsScreen:
@@ -79,7 +78,22 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => DoctorDetailsScreen(doctorModel: doctor),
         );
-     
+        
+      case Routes.bookAppointmentScreen:
+        final doctor = arguments as Doctors?;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<BookAppointmentCubit>(),
+            child: BookAppointmentScreen(doctor: doctor!),
+          ),
+        );
+
+        
+      case Routes.bookingConfirmedScreen:
+        final appointment = arguments as AppointmentModel?;
+        return MaterialPageRoute(
+          builder: (context) => BookingConfirmedScreen(appointment: appointment!),
+        );
 
       default:
         return MaterialPageRoute(

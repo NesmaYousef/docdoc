@@ -9,4 +9,8 @@ class ColorsManager {
   static const Color lighterGray = Color(0xFFEDEDED);
   static const Color moreLightGray = Color(0xFFFDFDFF);
   static const Color moreLighterGray = Color(0xFFF5F5F5);
+  static const Color successGreen = Color(0xFF22C55E);
+  static const Color mediumGray = Color(0xFF9CA3AF);
+  static const Color unselectedDateCardBg = Color(0xFFE0E0E0);
+  static const Color unselectedDateText = Color(0xFF6B7280);
 }

@@ -52,7 +52,13 @@ Widget setupSuccess(
           ),
         ),
         verticalSpace(14),
-        DoctorsListView(doctorsList: doctorsList, specialtyName: specialtyName),
+        Expanded(
+          child: DoctorsListView(
+            doctorsList: doctorsList,
+            specialtyName: specialtyName,
+          ),
+        ),
+
       ],
     ),
   );

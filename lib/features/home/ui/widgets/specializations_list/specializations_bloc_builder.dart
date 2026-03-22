@@ -50,11 +50,13 @@ class SpecializationsBlocBuilder extends StatelessWidget {
         children: [
           const SpecialityShimmerLoading(),
           verticalSpace(8),
-          const DoctorsShimmerLoading(),
+          const Expanded(child: DoctorsShimmerLoading()),
         ],
       ),
     );
   }
+
+
 
   Widget setupSuccess(dynamic specializationsList) {
     if (gridView) {

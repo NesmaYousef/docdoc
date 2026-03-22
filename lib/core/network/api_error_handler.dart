@@ -35,8 +35,38 @@ class ApiErrorHandler {
 
 ApiErrorModel _handleError(dynamic data) {
   return ApiErrorModel(
-    message: data['message'] ?? "Unknown error occurred",
-    code: data['code'],
-    errors: data['data'],
+    message: _extractMessage(data),
+    code: data is Map<String, dynamic> ? data['code'] : null,
+    errors: _extractErrors(data),
   );
 }
+
+String _extractMessage(dynamic data) {
+  if (data is Map<String, dynamic>) {
+    return data['message'] ?? "Unknown error occurred";
+  }
+  return "Unknown error occurred";
+}
+
+Map<String, List<String>>? _extractErrors(dynamic data) {
+  if (data == null || data is! Map<String, dynamic>) return null;
+
+  final errorData = data['data'];
+  if (errorData == null) return null;
+
+  if (errorData is Map<String, dynamic>) {
+    return errorData.map((key, value) {
+      if (value is List) {
+        return MapEntry(key, value.map((e) => e.toString()).toList());
+      } else {
+        return MapEntry(key, [value.toString()]);
+      }
+    });
+  }
+
+  if (errorData is List) {
+    return {'error': errorData.map((e) => e.toString()).toList()};
+  }
+
+  return {'error': [errorData.toString()]};
+}

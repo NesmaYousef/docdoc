@@ -33,7 +33,6 @@ class CustomBottomNavBar extends StatelessWidget {
         children: [
           _buildNavItem(index: 0, icon: 'home'),
           _buildNavItem(index: 1, icon: 'message'),
-          // Space for the large FAB
           SizedBox(width: 60.w),
           _buildNavItem(index: 2, icon: 'calendar'),
           _buildNavItem(index: 3, icon: 'message'),

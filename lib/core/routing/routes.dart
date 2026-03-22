@@ -10,4 +10,7 @@ class Routes {
   static const String profile = '/profile';
   static const String settings = '/settings';
   static const String about = '/about';
+  static const String appointmentsScreen = '/appointmentsScreen';
+  static const String bookAppointmentScreen = '/bookAppointmentScreen';
+  static const String bookingConfirmedScreen = '/bookingConfirmedScreen';
 }

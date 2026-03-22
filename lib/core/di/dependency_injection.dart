@@ -1,15 +1,18 @@
 import 'package:dio/dio.dart';
-import 'package:docdoc/core/network/api_service.dart';
-import 'package:docdoc/core/network/dio_factory.dart';
-import 'package:docdoc/features/auth/login/data/repos/login_repo.dart';
-import 'package:docdoc/features/auth/login/logic/cubit/login_cubit.dart';
-import 'package:docdoc/features/home/logic/cubit/home_cubit.dart';
-
-import 'package:docdoc/features/auth/signup/data/repos/signup_repo.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/appointments/data/repos/appointments_repo.dart';
+import '../../features/appointments/logic/cubit/appointments_view_cubit.dart';
+import '../../features/appointments/logic/cubit/book_appointment_cubit.dart';
+
+import '../../features/auth/login/data/repos/login_repo.dart';
+import '../../features/auth/login/logic/cubit/login_cubit.dart';
+import '../../features/auth/signup/data/repos/signup_repo.dart';
 import '../../features/home/data/repos/home_repo.dart';
 import '../../features/auth/signup/logic/cubit/signup_cubit.dart';
+import '../../features/home/logic/cubit/home_cubit.dart';
+import '../network/api_service.dart';
+import '../network/dio_factory.dart';
 
 final getIt = GetIt.instance;
 
@@ -29,4 +32,14 @@ Future<void> setupGetIt() async {
   //Home
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
+
+
+  // Appointments
+  getIt.registerLazySingleton<AppointmentsRepo>(
+        () => AppointmentsRepo(getIt()),
+  );
+  getIt.registerFactory<AppointmentsViewCubit>(() => AppointmentsViewCubit(getIt()));
+  getIt.registerFactory<BookAppointmentCubit>(() => BookAppointmentCubit(getIt()));
+
 }
+
