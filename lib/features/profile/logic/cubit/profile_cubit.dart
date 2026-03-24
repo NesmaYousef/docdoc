@@ -49,13 +49,16 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> logout() async {
     emit(const ProfileState.logoutLoading());
-    try {
-      // Clear token and user data locally
-      await SharedPrefHelper.removeData(SharedPrefKeys.userToken);
-      emit(const ProfileState.logoutSuccess());
-    } catch (e) {
-      emit(ProfileState.logoutError(e.toString()));
-    }
+    final result = await _profileRepo.logout();
+    result.when(
+      success: (_) async {
+        await SharedPrefHelper.removeData(SharedPrefKeys.userToken);
+        emit(const ProfileState.logoutSuccess());
+      },
+      failure: (error) {
+        emit(ProfileState.logoutError(error.message ?? 'Logout failed'));
+      },
+    );
   }
 
   Future<void> pickProfileImage() async {

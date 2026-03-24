@@ -25,6 +25,9 @@ abstract class ApiServices {
   @POST(ApiConstants.signup)
   Future<SignupResponse> signup(@Body() SignupRequestBody signUpRequestBody);
 
+  @POST(ApiConstants.logout)
+  Future<dynamic> logout();
+
 // Home Module
   @GET(ApiConstants.specializationsEP)
   Future<SpecializationsResponseModel> getSpecialization();

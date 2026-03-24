@@ -4,6 +4,7 @@ class ApiConstants {
 // Auth Module
   static const String login = "auth/login";
   static const String signup = "auth/register";
+  static const String logout = "auth/logout";
 
 // Home Module
   static const String specializationsEP = "specialization/index";

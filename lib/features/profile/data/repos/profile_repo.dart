@@ -16,4 +16,13 @@ class ProfileRepo {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
+
+  Future<ApiResult<dynamic>> logout() async {
+    try {
+      final response = await _apiService.logout();
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
 }
