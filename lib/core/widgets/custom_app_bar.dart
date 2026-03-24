@@ -32,40 +32,42 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: height,
       leading:
           leading ??
-          Padding(
-            padding: EdgeInsets.only(left: 20.w),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: InkWell(
-                onTap: () {
-                  if (onLeadingTap != null) {
-                    onLeadingTap!();
-                  } else {
-                    Navigator.pop(context);
-                  }
-                },
-                borderRadius: BorderRadius.circular(12.r),
-                child: Container(
-                  width: 40.w,
-                  height: 40.h,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: ColorsManager.lighterGray,
-                      width: 1,
+          (Navigator.canPop(context)
+              ? Padding(
+                  padding: EdgeInsets.only(left: 20.w),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: InkWell(
+                      onTap: () {
+                        if (onLeadingTap != null) {
+                          onLeadingTap!();
+                        } else {
+                          Navigator.pop(context);
+                        }
+                      },
+                      borderRadius: BorderRadius.circular(12.r),
+                      child: Container(
+                        width: 40.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: ColorsManager.lighterGray,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset(
+                            'assets/svgs/arrow_left.svg',
+                            width: 18.w,
+                            height: 18.h,
+                          ),
+                        ),
+                      ),
                     ),
-                    borderRadius: BorderRadius.circular(12.r),
                   ),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/svgs/arrow_left.svg',
-                      width: 18.w,
-                      height: 18.h,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+                )
+              : null),
       title: Text(
         title,
         style: TextStyles.font18DarkBlueBold.copyWith(

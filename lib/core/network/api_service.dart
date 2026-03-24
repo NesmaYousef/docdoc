@@ -8,6 +8,7 @@ import '../../features/auth/login/data/models/login_response.dart';
 import '../../features/auth/signup/data/models/signup_request_body.dart';
 import '../../features/auth/signup/data/models/signup_response.dart';
 import '../../features/home/data/models/specializations_response_model.dart';
+import '../../features/profile/data/models/profile_response.dart';
 import 'api_constants.dart';
 import 'api_response.dart';
 
@@ -37,4 +38,8 @@ abstract class ApiServices {
   Future<ApiResponse<AppointmentModel>> storeAppointment(
       @Body() StoreAppointmentRequestBody appointmentRequestBody,
       );
+
+// Profile Module
+  @GET(ApiConstants.userProfile)
+  Future<ProfileResponse> getUserProfile();
 }

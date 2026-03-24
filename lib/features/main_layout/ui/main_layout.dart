@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:docdoc/features/main_layout/ui/widgets/custom_bottom_nav_bar.dart';
 import '../../appointments/ui/screens/appointments_screen.dart';
 import '../../home/ui/screens/home_screen.dart';
+import '../../profile/ui/screens/profile_screen.dart';
+
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -18,11 +20,11 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   void initState() {
     super.initState();
-    _screens = const [
-      HomeScreen(),
-      Placeholder(),
-      AppointmentsScreen(),
-      Placeholder(),
+    _screens = [
+      const HomeScreen(),
+      const Placeholder(),
+      const AppointmentsScreen(),
+      ProfileScreen(onBack: () => setState(() => currentIndex = 0)),
     ];
   }
 
