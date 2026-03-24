@@ -18,9 +18,19 @@ import '../../features/auth/signup/ui/screens/signup_screen.dart';
 import '../../features/appointments/logic/cubit/book_appointment_cubit.dart';
 import '../../features/appointments/ui/screens/book_appointment_screen.dart';
 
+import '../../features/appointments/ui/screens/appointments_screen.dart';
 import '../../features/appointments/ui/screens/booking_confirmed_screen.dart';
 import '../../features/appointments/data/models/appointments_response_model.dart';
 
+import '../../features/profile/ui/screens/personal_information_screen.dart';
+import '../../features/profile/ui/screens/medical_record_screen.dart';
+import '../../features/profile/ui/screens/payment_screen.dart';
+import '../../features/profile/ui/screens/notification_screen.dart';
+import '../../features/profile/ui/screens/faq_screen.dart';
+import '../../features/profile/ui/screens/security_screen.dart';
+import '../../features/profile/ui/screens/language_screen.dart';
+import '../../features/profile/ui/screens/settings_screen.dart';
+import '../../features/profile/logic/cubit/profile_cubit.dart';
 class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {
     //This arguments to be passed to screens like this: (arguments as ClassName)
@@ -44,16 +54,20 @@ class AppRouter {
           ),
         );
 
-        
+
       case Routes.mainLayout:
-        return MaterialPageRoute(builder: (context) => MainLayout(),
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ProfileCubit>()..getUserProfile(),
+            child: const MainLayout(),
+          ),
         );
 
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (context)=> HomeScreen(),
         );
-        
+
       case Routes.specializationsScreen:
         return MaterialPageRoute(
           builder: (context) {
@@ -78,7 +92,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => DoctorDetailsScreen(doctorModel: doctor),
         );
-        
+
       case Routes.bookAppointmentScreen:
         final doctor = arguments as Doctors?;
         return MaterialPageRoute(
@@ -88,12 +102,51 @@ class AppRouter {
           ),
         );
 
-        
+
       case Routes.bookingConfirmedScreen:
         final appointment = arguments as AppointmentModel?;
         return MaterialPageRoute(
           builder: (context) => BookingConfirmedScreen(appointment: appointment!),
         );
+
+      case Routes.appointmentsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AppointmentsScreen(),
+        );
+
+      case Routes.settings:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<ProfileCubit>(),
+            child: const SettingsScreen(),
+          ),
+        );
+
+      case Routes.personalInformation:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<ProfileCubit>()..getUserProfile(),
+            child: const PersonalInformationScreen(),
+          ),
+        );
+
+      case Routes.medicalRecords:
+        return MaterialPageRoute(builder: (_) => const MedicalRecordScreen());
+
+      case Routes.payment:
+        return MaterialPageRoute(builder: (_) => const PaymentScreen());
+
+      case Routes.notificationSettings:
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
+
+      case Routes.faq:
+        return MaterialPageRoute(builder: (_) => const FaqScreen());
+
+      case Routes.security:
+        return MaterialPageRoute(builder: (_) => const SecurityScreen());
+
+      case Routes.language:
+        return MaterialPageRoute(builder: (_) => const LanguageScreen());
 
       default:
         return MaterialPageRoute(

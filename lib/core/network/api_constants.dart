@@ -11,6 +11,9 @@ class ApiConstants {
 // Appointments Module
   static const String getAllAppointments = "appointment/index";
   static const String storeAppointment = "appointment/store";
+
+// Profile Module
+  static const String userProfile = "user/profile";
 }
 
   class ApiErrors {

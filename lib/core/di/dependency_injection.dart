@@ -5,6 +5,9 @@ import '../../features/appointments/data/repos/appointments_repo.dart';
 import '../../features/appointments/logic/cubit/appointments_view_cubit.dart';
 import '../../features/appointments/logic/cubit/book_appointment_cubit.dart';
 
+import '../../features/profile/data/repos/profile_repo.dart';
+import '../../features/profile/logic/cubit/profile_cubit.dart';
+
 import '../../features/auth/login/data/repos/login_repo.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/auth/signup/data/repos/signup_repo.dart';
@@ -40,6 +43,10 @@ Future<void> setupGetIt() async {
   );
   getIt.registerFactory<AppointmentsViewCubit>(() => AppointmentsViewCubit(getIt()));
   getIt.registerFactory<BookAppointmentCubit>(() => BookAppointmentCubit(getIt()));
+
+  // Profile
+  getIt.registerLazySingleton<ProfileRepo>(() => ProfileRepo(getIt()));
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
 
 }
 

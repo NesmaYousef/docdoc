@@ -22,7 +22,9 @@
           <set>
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core-4.5.0/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_native_splash-2.4.7/android" />
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage-10.0.0/android" />
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_android-0.8.13+14/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.22/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.4.21/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite_android-2.4.2+2/android" />

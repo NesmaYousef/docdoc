@@ -19,9 +19,9 @@ class MainFAB extends StatelessWidget {
         color: ColorsManager.mainBlue,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 2,
-            offset: const Offset(0, -2),
+            color: ColorsManager.mainBlue.withValues(alpha: 0.3),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
           ),
         ],
       ),

@@ -75,6 +75,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   # A Flutter package that provides a customizable and animated navigation bar widget.
   glaze_nav_bar: ^1.2.1
+  image_picker: ^1.2.1
 
 
 

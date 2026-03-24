@@ -13,4 +13,11 @@ class Routes {
   static const String appointmentsScreen = '/appointmentsScreen';
   static const String bookAppointmentScreen = '/bookAppointmentScreen';
   static const String bookingConfirmedScreen = '/bookingConfirmedScreen';
+  static const String personalInformation = '/personalInformation';
+  static const String medicalRecords = '/medicalRecords';
+  static const String payment = '/payment';
+  static const String notificationSettings = '/notificationSettings';
+  static const String faq = '/faq';
+  static const String security = '/security';
+  static const String language = '/language';
 }
