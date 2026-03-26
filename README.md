@@ -6,12 +6,12 @@ Mediqa  is a premium, high-performance medical appointment scheduling applicatio
 
 ## ✨ Features & Architecture Highlights
 
-⚡ Zero-delay loading for returning users via intelligent caching
-🔒 Secure authentication with token-based authorization
-📱 Cross-platform support 
-🏗️ Clean Architecture with strict separation of concerns
-🎨 Modern UI/UX with Glassmorphism effects and custom animations
-🌐 Offline-first approach with background synchronization
+- ⚡ Zero-delay loading for returning users via intelligent caching
+- 🔒 Secure authentication with token-based authorization
+- 📱 Cross-platform support 
+- 🏗️ Clean Architecture with strict separation of concerns
+- 🎨 Modern UI/UX with Glassmorphism effects and custom animations
+- 🌐 Offline-first approach with background synchronization
 ---
 
 ## 🛠️ Technology Stack
