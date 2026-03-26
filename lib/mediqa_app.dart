@@ -8,7 +8,8 @@ import 'core/routing/routes.dart';
 
 class MediqaApp extends StatelessWidget {
   final AppRouter appRouter;
-  const MediqaApp({super.key, required this.appRouter});
+  final bool isLoggedInUser;
+  const MediqaApp({super.key, required this.appRouter, required this.isLoggedInUser});
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +17,13 @@ class MediqaApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
-        title: 'Mediqa',
+        title: 'Mediqa App',
         theme: ThemeData(
-          fontFamily: 'Inter',
-          useMaterial3: true,
           primaryColor: AppColors.primary,
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: isLoggedInUser
-            ? Routes.mainLayout
-            : Routes.onboardingScreen,
+        initialRoute: isLoggedInUser ? Routes.mainLayout : Routes.onboardingScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:mediqa/core/di/dependency_injection.dart';
-import 'package:mediqa/core/helpers/extensions.dart';
 import 'package:mediqa/core/helpers/shared_pref_helper.dart';
 import 'package:mediqa/core/routing/app_router.dart';
 import 'package:mediqa/mediqa_app.dart';
@@ -10,8 +9,9 @@ import 'package:mediqa/features/home/data/models/specializations_hive_adapters.d
 
 import 'core/helpers/constants.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefHelper.init();
   await ScreenUtil.ensureScreenSize();
   await Hive.initFlutter();
   Hive.registerAdapter(SpecializationsResponseModelAdapter());
@@ -19,21 +19,14 @@ void main() async{
   Hive.registerAdapter(DoctorsAdapter());
   await Hive.openBox('home_cache');
   await Hive.openBox('recent_searches');
-  await checkIfLoggedInUser();
-  setupGetIt();
-  runApp(
-      MediqaApp(
+  
+  await setupGetIt();
+  
+  final userToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
+  final isLoggedInUser = userToken.isNotEmpty;
+  
+  runApp(MediqaApp(
     appRouter: AppRouter(),
+    isLoggedInUser: isLoggedInUser,
   ));
-
-}
-Future<void> checkIfLoggedInUser() async {
-  String? userToken =
-  await SharedPrefHelper.getString(SharedPrefKeys.userToken);
-  // await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
-  if (!userToken.isNullOrEmpty()) {
-    isLoggedInUser = true;
-  } else {
-    isLoggedInUser = false;
-  }
 }

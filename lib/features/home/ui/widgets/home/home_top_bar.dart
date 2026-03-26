@@ -12,36 +12,31 @@ class HomeTopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<String>(
-      future: SharedPrefHelper.getString(SharedPrefKeys.userName),
-      builder: (context, snapshot) {
-        final name = (snapshot.data?.isNotEmpty == true)
-            ? snapshot.data!
-            : 'There';
-        return Row(
+    final name = SharedPrefHelper.getString(SharedPrefKeys.userName);
+    final displayName = name.isNotEmpty ? name : 'There';
+
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hi, $name!',
-                  style: TextStyles.font14DarkBold,
-                ),
-                Text(
-                  'How are you today?',
-                  style: TextStyles.font12GrayRegular,
-                ),
-              ],
+            Text(
+              'Hi, $displayName!',
+              style: TextStyles.font14DarkBold,
             ),
-            const Spacer(),
-            CircleAvatar(
-              radius: 24.r,
-              backgroundColor: AppColors.bgSurface,
-              child: SvgPicture.asset('assets/svgs/alert.svg'),
+            Text(
+              'How are you today?',
+              style: TextStyles.font12GrayRegular,
             ),
           ],
-        );
-      },
+        ),
+        const Spacer(),
+        CircleAvatar(
+          radius: 24.r,
+          backgroundColor: AppColors.bgSurface,
+          child: SvgPicture.asset('assets/svgs/alert.svg'),
+        ),
+      ],
     );
   }
 }

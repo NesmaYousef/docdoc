@@ -99,9 +99,12 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<SpecializationsResponseModel> getSpecialization() async {
+  Future<SpecializationsResponseModel> getSpecialization(
+    CancelToken? cancelToken,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<SpecializationsResponseModel>(
@@ -111,6 +114,7 @@ class _ApiServices implements ApiServices {
             'specialization/index',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

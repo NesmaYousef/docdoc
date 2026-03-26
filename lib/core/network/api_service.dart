@@ -30,7 +30,9 @@ abstract class ApiServices {
 
 // Home Module
   @GET(ApiConstants.specializationsEP)
-  Future<SpecializationsResponseModel> getSpecialization();
+  Future<SpecializationsResponseModel> getSpecialization(
+    @CancelRequest() CancelToken? cancelToken,
+  );
 
 
 // Appointments Module

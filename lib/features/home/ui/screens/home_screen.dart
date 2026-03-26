@@ -3,10 +3,7 @@ import 'package:mediqa/core/routing/routes.dart';
 import 'package:mediqa/features/home/ui/widgets/home/home_top_bar.dart';
 import 'package:mediqa/features/home/ui/widgets/specializations_list/specializations_bloc_builder.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../logic/cubit/home_cubit.dart';
 import '../widgets/home/hero_booking_card.dart';
 import '../widgets/doctors_list/doctors_bloc_builder.dart';
 import '../widgets/home/doctors_speciality_see_all.dart';
@@ -16,9 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: getIt<HomeCubit>()..getSpecializations(),
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
           child: SizedBox(
@@ -51,7 +46,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

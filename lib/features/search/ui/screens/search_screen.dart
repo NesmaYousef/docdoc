@@ -33,6 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
+    context.read<HomeCubit>().getSpecializations();
     _loadRecentSearches();
     _searchController.addListener(() {
       setState(() {

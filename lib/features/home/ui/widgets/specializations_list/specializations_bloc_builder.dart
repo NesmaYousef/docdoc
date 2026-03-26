@@ -19,17 +19,26 @@ class SpecializationsBlocBuilder extends StatelessWidget {
       buildWhen: (previous, current) =>
       current is SpecializationLoading ||
           current is SpecializationSuccess ||
-          current is SpecializationError,
+          current is SpecializationError ||
+          current is DoctorsSuccess,
       builder: (context, state) {
         return state.maybeWhen(
             specializationLoading: () {
               return setupLoading();
             },
             specializationSuccess: (specializationDataList) {
-              var specializationsList = specializationDataList;
-              return setupSuccess(specializationsList);
+              return setupSuccess(specializationDataList);
             },
-            specializationsError: (errorHandler) => setupError(errorHandler),
+            doctorsSuccess: (doctorsList) {
+              return setupSuccess(context.read<HomeCubit>().specializationsList);
+            },
+            specializationsError: (errorHandler) {
+              final cachedList = context.read<HomeCubit>().specializationsList;
+              if (cachedList != null && cachedList.isNotEmpty) {
+                return setupSuccess(cachedList);
+              }
+              return setupError(errorHandler);
+            },
             orElse: () {
               return const SizedBox.shrink();
             });

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mediqa/core/network/api_error_handler.dart';
 import 'package:mediqa/core/network/api_result.dart';
@@ -9,11 +10,19 @@ class HomeRepo {
 
   HomeRepo(this._homeApiService);
 
-  Future<ApiResult<SpecializationsResponseModel>> getSpecialization() async {
+  Future<ApiResult<SpecializationsResponseModel>> getSpecialization({
+    CancelToken? cancelToken,
+  }) async {
     try {
-      final response = await _homeApiService.getSpecialization();
-      // Write to cache (no await strictly needed since memory is updated instantly)
-      Hive.box('home_cache').put('specializations', response);
+      final response = await _homeApiService.getSpecialization(cancelToken);
+      // Safe cache write with error handling
+      try {
+        final box = Hive.box('home_cache');
+        await box.put('specializations', response);
+      } catch (cacheError) {
+        // Log but don't fail the API call
+        print('Cache write failed: $cacheError');
+      }
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

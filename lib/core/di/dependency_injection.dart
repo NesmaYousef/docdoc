@@ -21,7 +21,7 @@ final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   //Dio & ApiServices
-  Dio dio = DioFactory.getDio();
+  Dio dio = await DioFactory.getDio();
   getIt.registerLazySingleton<ApiServices>(() => ApiServices(dio));
 
   //login
@@ -34,7 +34,7 @@ Future<void> setupGetIt() async {
 
   //Home
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
-  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(getIt()));
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
 
 
   // Appointments
@@ -46,7 +46,7 @@ Future<void> setupGetIt() async {
 
   // Profile
   getIt.registerLazySingleton<ProfileRepo>(() => ProfileRepo(getIt()));
-  getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit(getIt()));
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
 
 }
 

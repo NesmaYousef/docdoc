@@ -22,13 +22,13 @@ class ProfileCubit extends Cubit<ProfileState> {
   void getUserProfile() async {
     emit(const ProfileState.profileLoading());
     // Load cached image path
-    avatarPath = await SharedPrefHelper.getString(SharedPrefKeys.profileImage);
+    avatarPath = SharedPrefHelper.getString(SharedPrefKeys.profileImage);
     if (avatarPath != null && avatarPath!.isNotEmpty) {
       emit(ProfileState.profileImageUpdated(avatarPath!));
     }
 
     // Load cached profile data instantly if available
-    final cachedStr = await SharedPrefHelper.getString('cachedProfileData');
+    final cachedStr = SharedPrefHelper.getString('cachedProfileData');
     if (cachedStr.isNotEmpty) {
       try {
         final map = jsonDecode(cachedStr);
@@ -45,7 +45,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       }
     } else {
       // Fallback to legacy single-string cache if the user hasn't synced the new JSON cache yet
-      final legacyName = await SharedPrefHelper.getString(SharedPrefKeys.userName);
+      final legacyName = SharedPrefHelper.getString(SharedPrefKeys.userName);
       if (legacyName.isNotEmpty) {
         profileData = ProfileData(name: legacyName);
         emit(ProfileState.profileSuccess(profileData!));

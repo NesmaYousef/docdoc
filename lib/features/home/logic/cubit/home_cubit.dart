@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -9,9 +10,18 @@ import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
+  CancelToken? _cancelToken;
+
   HomeCubit(this._homeRepo) : super(const HomeState.initial());
+
   List<SpecializationsData?>? specializationsList = [];
   SpecializationsData? selectedSpecialization;
+
+  @override
+  Future<void> close() {
+    _cancelToken?.cancel();
+    return super.close();
+  }
 
   // Specializations
   void getSpecializations() async {
@@ -34,7 +44,10 @@ class HomeCubit extends Cubit<HomeState> {
     }
 
     // 2. Fetch fresh data from API silently in the background
-    final response = await _homeRepo.getSpecialization();
+    _cancelToken?.cancel();
+    _cancelToken = CancelToken();
+
+    final response = await _homeRepo.getSpecialization(cancelToken: _cancelToken);
     if (!isClosed) {
       response.when(
         success: (specializationsResponseModel) {

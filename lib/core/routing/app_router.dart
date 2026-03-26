@@ -58,8 +58,15 @@ class AppRouter {
 
       case Routes.mainLayout:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: getIt<ProfileCubit>()..getUserProfile(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<ProfileCubit>()..getUserProfile(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<HomeCubit>()..getSpecializations(),
+              ),
+            ],
             child: const MainLayout(),
           ),
         );
@@ -71,20 +78,18 @@ class AppRouter {
 
       case Routes.searchScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: getIt<HomeCubit>(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
             child: const SearchScreen(),
           ),
         );
 
       case Routes.specializationsScreen:
         return MaterialPageRoute(
-          builder: (context) {
-            return BlocProvider.value(
-              value: getIt<HomeCubit>(),
-              child: const SpecializationsScreen(),
-            );
-          },
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+            child: const SpecializationsScreen(),
+          ),
         );
 
       case Routes.specialityDoctorsScreen:
@@ -125,16 +130,16 @@ class AppRouter {
 
       case Routes.settings:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: getIt<ProfileCubit>(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<ProfileCubit>(),
             child: const SettingsScreen(),
           ),
         );
 
       case Routes.personalInformation:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: getIt<ProfileCubit>(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<ProfileCubit>(),
             child: const PersonalInformationScreen(),
           ),
         );

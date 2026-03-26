@@ -13,8 +13,19 @@ import '../../logic/cubit/profile_state.dart';
 import '../widgets/profile_field.dart';
 import '../widgets/profile_save_button.dart';
 
-class PersonalInformationScreen extends StatelessWidget {
+class PersonalInformationScreen extends StatefulWidget {
   const PersonalInformationScreen({super.key});
+
+  @override
+  State<PersonalInformationScreen> createState() => _PersonalInformationScreenState();
+}
+
+class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProfileCubit>().getUserProfile();
+  }
 
   @override
   Widget build(BuildContext context) {
