@@ -10,7 +10,7 @@ Mediqa  is a premium, high-performance medical appointment scheduling applicatio
 Mediqa guarantees a **0ms loading delay** for returning users by implementing the industry-standard **Stale-While-Revalidate** caching pattern. 
 * The application intelligently pings the API in the background—silently updating the UI if new data exists, while gracefully suppressing network errors if you are completely offline!
 
-### 🏗️ Domain-Driven Design (Clean Architecture)
+### 🏗️ Clean Architecture
 The codebase uses a highly modular feature-driven folder structure ensuring absolute scalability for enterprise teams:
 * **UI Layer:** Exclusively handles rendering components, scalable custom Glassmorphism widgets, and routing.
 * **Logic Layer:** Employs **Cubit** (`flutter_bloc`) to strictly isolate UI business logic from networking tasks. 
