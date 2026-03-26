@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:docdoc/core/network/api_result.dart';
-import 'package:docdoc/features/auth/signup/data/models/signup_request_body.dart';
-import 'package:docdoc/features/auth/signup/data/repos/signup_repo.dart';
-import 'package:docdoc/features/auth/signup/logic/cubit/signup_state.dart';
+import 'package:mediqa/core/network/api_result.dart';
+import 'package:mediqa/features/auth/signup/data/models/signup_request_body.dart';
+import 'package:mediqa/features/auth/signup/data/repos/signup_repo.dart';
+import 'package:mediqa/features/auth/signup/logic/cubit/signup_state.dart';
 import 'package:flutter/cupertino.dart';
 
 class SignupCubit extends Cubit<SignupState> {

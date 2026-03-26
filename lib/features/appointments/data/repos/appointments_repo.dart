@@ -1,8 +1,8 @@
-import 'package:docdoc/core/network/api_error_handler.dart';
-import 'package:docdoc/core/network/api_result.dart';
-import 'package:docdoc/core/network/api_service.dart';
-import 'package:docdoc/features/appointments/data/models/appointments_response_model.dart';
-import 'package:docdoc/features/appointments/data/models/store_appointment_request_body.dart';
+import 'package:mediqa/core/network/api_error_handler.dart';
+import 'package:mediqa/core/network/api_result.dart';
+import 'package:mediqa/core/network/api_service.dart';
+import 'package:mediqa/features/appointments/data/models/appointments_response_model.dart';
+import 'package:mediqa/features/appointments/data/models/store_appointment_request_body.dart';
 
 
 class AppointmentsRepo {

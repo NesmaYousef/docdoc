@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../logic/cubit/profile_cubit.dart';
@@ -18,7 +19,7 @@ class PersonalInformationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgCard,
       appBar: const CustomAppBar(title: 'Personal information'),
       body: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
@@ -34,7 +35,7 @@ class PersonalInformationScreen extends StatelessWidget {
                 Center(
                   child: CircleAvatar(
                     radius: 50.r,
-                    backgroundColor: const Color(0xffD4D4F4),
+                    backgroundColor: AppColors.primarySurface,
                     child: ClipOval(
                       child: (avatarPath != null && avatarPath.isNotEmpty)
                           ? Image.file(
@@ -72,7 +73,7 @@ class PersonalInformationScreen extends StatelessWidget {
                       children: [
                         const Icon(Icons.flag, size: 20),
                         horizontalSpace(4),
-                        Text('+20 ', style: TextStyles.font14DarkBlueMedium),
+                        Text('+20 ', style: TextStyles.font14DarkMedium),
                       ],
                     ),
                   ),
@@ -81,7 +82,7 @@ class PersonalInformationScreen extends StatelessWidget {
                     Text(
                       state.error,
                       style: TextStyles.font14GrayRegular
-                          .copyWith(color: Colors.red),
+                          .copyWith(color: AppColors.error),
                     ),
                   ],
                 ],

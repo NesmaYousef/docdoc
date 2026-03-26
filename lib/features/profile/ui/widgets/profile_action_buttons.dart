@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 
 class ProfileActionButtons extends StatelessWidget {
@@ -14,9 +14,9 @@ class ProfileActionButtons extends StatelessWidget {
       child: Container(
         height: 80.h,
         decoration: BoxDecoration(
-          color: const Color(0xffF9FAFB),
+          color: AppColors.bgSurface,
           borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: const Color(0xffF0F0F0), width: 1),
+          border: Border.all(color: AppColors.strokeGray, width: 1),
         ),
         child: Row(
           children: [
@@ -53,7 +53,7 @@ class ProfileActionButtons extends StatelessWidget {
             child: Center(
               child: Text(
                 title,
-                style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.black),
+                style: TextStyles.font14DarkMedium.copyWith(color: AppColors.textDark),
               ),
             ),
           ),
@@ -62,7 +62,7 @@ class ProfileActionButtons extends StatelessWidget {
             Container(
               height: 40.h,
               width: 1.w,
-              color: ColorsManager.lightGray.withValues(alpha: 0.3),
+              color: AppColors.strokeGray.withValues(alpha: 0.3),
             ),
         ],
       ),

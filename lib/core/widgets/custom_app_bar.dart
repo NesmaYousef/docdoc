@@ -1,5 +1,5 @@
-import 'package:docdoc/core/theme/colors_manager.dart';
-import 'package:docdoc/core/theme/text_styles.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
+import 'package:mediqa/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,9 +26,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgCard,
       elevation: 0,
-      surfaceTintColor: Colors.white,
+      surfaceTintColor: AppColors.bgCard,
       toolbarHeight: height,
       leading:
           leading ??
@@ -51,7 +51,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         height: 40.h,
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: ColorsManager.lighterGray,
+                            color: AppColors.strokeGray,
                             width: 1,
                           ),
                           borderRadius: BorderRadius.circular(12.r),
@@ -70,7 +70,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               : null),
       title: Text(
         title,
-        style: TextStyles.font18DarkBlueBold.copyWith(
+        style: TextStyles.font18DarkBold.copyWith(
           fontWeight: FontWeight.w600,
           letterSpacing: 0.2,
         ),

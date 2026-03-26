@@ -1,4 +1,4 @@
-import 'package:docdoc/core/theme/colors_manager.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
@@ -26,8 +26,8 @@ class SpecialityGridShimmerLoading extends StatelessWidget {
 
   Widget _buildShimmerCard() {
     return Shimmer.fromColors(
-      baseColor: ColorsManager.lightGray,
-      highlightColor: Colors.white,
+      baseColor: AppColors.strokeGray,
+      highlightColor: AppColors.bgCard,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -35,7 +35,7 @@ class SpecialityGridShimmerLoading extends StatelessWidget {
             width: 72.w,
             height: 72.w,
             decoration: const BoxDecoration(
-              color: Color(0xffF5F9FF),
+              color: AppColors.primarySurface,
               shape: BoxShape.circle,
             ),
           ),
@@ -44,7 +44,7 @@ class SpecialityGridShimmerLoading extends StatelessWidget {
             width: 56.w,
             height: 12.h,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.bgCard,
               borderRadius: BorderRadius.circular(4.r),
             ),
           ),

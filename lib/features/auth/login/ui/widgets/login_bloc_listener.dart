@@ -1,8 +1,8 @@
-import 'package:docdoc/core/helpers/extensions.dart';
-import 'package:docdoc/core/routing/routes.dart';
-import 'package:docdoc/core/theme/colors_manager.dart';
-import 'package:docdoc/features/auth/login/logic/cubit/login_cubit.dart';
-import 'package:docdoc/features/auth/login/logic/cubit/login_state.dart';
+import 'package:mediqa/core/helpers/extensions.dart';
+import 'package:mediqa/core/routing/routes.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
+import 'package:mediqa/features/auth/login/logic/cubit/login_cubit.dart';
+import 'package:mediqa/features/auth/login/logic/cubit/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,13 +23,13 @@ class LoginBlocListener extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) => const Center(
-                child: CircularProgressIndicator(color: ColorsManager.mainBlue),
+                child: CircularProgressIndicator(color: AppColors.primary),
               ),
             );
           },
           loginSuccess: (loginResponse) {
             context.pop();
-            context.pushNamed(Routes.mainLayout);
+            context.pushAndRemoveUntil(Routes.mainLayout);
           },
           loginError: (apiErrorModel) {
             setupErrorState(context, apiErrorModel);
@@ -47,12 +47,12 @@ class LoginBlocListener extends StatelessWidget {
       builder: (context) => AlertDialog(
         icon: const Icon(
           Icons.error,
-          color: Colors.red,
+          color: AppColors.error,
           size: 32,
         ),
         content: Text(
           apiErrorModel.getAllErrorMessages(),
-          style: TextStyles.font15DarkBlueMedium,
+          style: TextStyles.font15DarkMedium,
         ),
         actions: [
           TextButton(
@@ -61,7 +61,7 @@ class LoginBlocListener extends StatelessWidget {
             },
             child: Text(
               'Got it',
-              style: TextStyles.font14BlueSemiBold,
+              style: TextStyles.font14PrimarySemiBold,
             ),
           ),
         ],

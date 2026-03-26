@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../data/models/profile_response.dart';
 import '../../logic/cubit/profile_cubit.dart';
@@ -37,7 +37,6 @@ class ProfileHeader extends StatelessWidget {
                 onTap: cubit.pickProfileImage,
               ),
               verticalSpace(14),
-              // Using the clean "setup" logic pattern you requested
               state.maybeWhen(
                 profileLoading: () => setupLoading(),
                 profileSuccess: (data) => setupSuccess(data),
@@ -62,7 +61,7 @@ class ProfileHeader extends StatelessWidget {
   Widget setupSuccess(ProfileData? data) {
     return Column(
       children: [
-        Text(data?.name ?? 'User', style: TextStyles.font24BlackBold),
+        Text(data?.name ?? 'User', style: TextStyles.font24DarkBold),
         verticalSpace(6),
         if (data?.email != null && data!.email!.isNotEmpty)
           Text(data.email!, style: TextStyles.font14GrayRegular),
@@ -73,14 +72,14 @@ class ProfileHeader extends StatelessWidget {
   Widget setupError(String error, ProfileData? fallbackData) {
     return Column(
       children: [
-        Text(fallbackData?.name ?? 'User', style: TextStyles.font24BlackBold),
+        Text(fallbackData?.name ?? 'User', style: TextStyles.font24DarkBold),
         verticalSpace(6),
         if (fallbackData?.email != null)
           Text(fallbackData!.email!, style: TextStyles.font14GrayRegular),
         verticalSpace(6),
         Text(
           error,
-          style: TextStyles.font14GrayRegular.copyWith(color: Colors.redAccent),
+          style: TextStyles.font14GrayRegular.copyWith(color: AppColors.error),
           textAlign: TextAlign.center,
         ),
       ],
@@ -110,11 +109,11 @@ class _Avatar extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: ColorsManager.lighterGray,
-            border: Border.all(color: Colors.white, width: 4.w),
+            color: AppColors.strokeGray,
+            border: Border.all(color: AppColors.bgCard, width: 4.w),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.08),
+                color: AppColors.textDark.withValues(alpha: 0.08),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -122,7 +121,7 @@ class _Avatar extends StatelessWidget {
           ),
           child: isLoading
               ? const Center(child: CircularProgressIndicator(strokeWidth: 2))
-              : localAvatar != null
+              : (localAvatar != null && localAvatar!.isNotEmpty)
               ? Image.file(File(localAvatar!), fit: BoxFit.cover)
               : Image.asset('assets/images/user_avatar.png', fit: BoxFit.cover),
         ),
@@ -131,14 +130,14 @@ class _Avatar extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(6.w),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.bgCard,
               shape: BoxShape.circle,
-              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5)],
+              boxShadow: [BoxShadow(color: AppColors.textDark.withValues(alpha: 0.1), blurRadius: 5)],
             ),
             child: Icon(
               Icons.edit_outlined,
               size: 14.sp,
-              color: isLoading ? ColorsManager.mainBlue.withOpacity(0.4) : ColorsManager.mainBlue,
+              color: isLoading ? AppColors.primary.withOpacity(0.4) : AppColors.primary,
             ),
           ),
         ),

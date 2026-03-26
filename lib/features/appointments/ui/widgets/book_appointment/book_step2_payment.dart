@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/widgets/app_text_button.dart';
-import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 
 class BookStep2Payment extends StatelessWidget {
@@ -43,11 +43,11 @@ class BookStep2Payment extends StatelessWidget {
               child: Column(
                 children: [
                   _buildCardItem(Colors.orange, 'Master Card'),
-                  const Divider(color: ColorsManager.moreLighterGray),
+                  const Divider(color: AppColors.bgSurface),
                   _buildCardItem(Colors.blue, 'American Express'),
-                  const Divider(color: ColorsManager.moreLighterGray),
+                  const Divider(color: AppColors.bgSurface),
                   _buildCardItem(Colors.red, 'Capital One'),
-                  const Divider(color: ColorsManager.moreLighterGray),
+                  const Divider(color: AppColors.bgSurface),
                   _buildCardItem(Colors.lightBlue, 'Barclays'),
                 ],
               ),
@@ -99,7 +99,7 @@ class BookStep2Payment extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: isSelected ? ColorsManager.mainBlue : ColorsManager.lightGray,
+                color: isSelected ? AppColors.primary : AppColors.strokeGray,
                 width: isSelected ? 6 : 1,
               ),
             ),
@@ -107,7 +107,7 @@ class BookStep2Payment extends StatelessWidget {
           SizedBox(width: 12.w),
           Text(
             title,
-            style: isMain ? TextStyles.font14BlackRegular.copyWith(fontWeight: FontWeight.w500) : TextStyles.font14DarkBlueMedium,
+            style: isMain ? TextStyles.font14DarkMedium.copyWith(fontWeight: FontWeight.w500) : TextStyles.font14DarkMedium,
           ),
           if (trailing != null) ...[
             const Spacer(),
@@ -136,7 +136,7 @@ class BookStep2Payment extends StatelessWidget {
           SizedBox(width: 12.w),
           Text(
             name,
-            style: TextStyles.font14DarkBlueMedium,
+            style: TextStyles.font14DarkMedium,
           ),
         ],
       ),

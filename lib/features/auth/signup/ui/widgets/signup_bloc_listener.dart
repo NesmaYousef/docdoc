@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/network/api_error_model.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 import '../../logic/cubit/signup_cubit.dart';
 import '../../logic/cubit/signup_state.dart';
@@ -25,7 +25,7 @@ class SignupBlocListener extends StatelessWidget {
               context: context,
               builder: (context) => const Center(
                 child: CircularProgressIndicator(
-                  color: ColorsManager.mainBlue,
+                  color: AppColors.primary,
                 ),
               ),
             );
@@ -59,7 +59,7 @@ class SignupBlocListener extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Colors.blue, disabledForegroundColor: Colors.grey.withAlpha(38),
+                foregroundColor: AppColors.bgCard, backgroundColor: AppColors.primary, disabledForegroundColor: AppColors.textGray.withAlpha(38),
               ),
               onPressed: () {
                 context.pushNamed(Routes.loginScreen);
@@ -79,12 +79,12 @@ class SignupBlocListener extends StatelessWidget {
       builder: (context) => AlertDialog(
         icon: const Icon(
           Icons.error,
-          color: Colors.red,
+          color: AppColors.error,
           size: 32,
         ),
         content: Text(
           apiErrorModel.getAllErrorMessages(),
-          style: TextStyles.font15DarkBlueMedium,
+          style: TextStyles.font15DarkMedium,
         ),
         actions: [
           TextButton(
@@ -93,7 +93,7 @@ class SignupBlocListener extends StatelessWidget {
             },
             child: Text(
               'Got it',
-              style: TextStyles.font14BlueSemiBold,
+              style: TextStyles.font14PrimarySemiBold,
             ),
           ),
         ],

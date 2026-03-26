@@ -1,6 +1,6 @@
-import 'package:docdoc/core/helpers/constants.dart';
-import 'package:docdoc/core/helpers/shared_pref_helper.dart';
-import 'package:docdoc/core/theme/colors_manager.dart';
+import 'package:mediqa/core/helpers/constants.dart';
+import 'package:mediqa/core/helpers/shared_pref_helper.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,7 +25,7 @@ class HomeTopBar extends StatelessWidget {
               children: [
                 Text(
                   'Hi, $name!',
-                  style: TextStyles.font14DarkBlueBold,
+                  style: TextStyles.font14DarkBold,
                 ),
                 Text(
                   'How are you today?',
@@ -36,7 +36,7 @@ class HomeTopBar extends StatelessWidget {
             const Spacer(),
             CircleAvatar(
               radius: 24.r,
-              backgroundColor: ColorsManager.moreLighterGray,
+              backgroundColor: AppColors.bgSurface,
               child: SvgPicture.asset('assets/svgs/alert.svg'),
             ),
           ],

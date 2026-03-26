@@ -1,13 +1,14 @@
-import 'package:docdoc/core/helpers/extensions.dart';
-import 'package:docdoc/core/helpers/spacing.dart';
-import 'package:docdoc/core/routing/routes.dart';
-import 'package:docdoc/features/home/logic/cubit/home_cubit.dart';
-import 'package:docdoc/features/home/logic/cubit/home_state.dart';
-import 'package:docdoc/features/home/ui/widgets/home/doctors_speciality_see_all.dart';
+import 'package:mediqa/core/helpers/extensions.dart';
+import 'package:mediqa/core/helpers/spacing.dart';
+import 'package:mediqa/core/routing/routes.dart';
+import 'package:mediqa/features/home/logic/cubit/home_cubit.dart';
+import 'package:mediqa/features/home/logic/cubit/home_state.dart';
+import 'package:mediqa/features/home/ui/widgets/home/doctors_speciality_see_all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'doctors_list_view.dart';
+import 'doctors_shimmer_loading.dart';
 
 class DoctorsBlocBuilder extends StatelessWidget {
   const DoctorsBlocBuilder({super.key});
@@ -26,7 +27,10 @@ class DoctorsBlocBuilder extends StatelessWidget {
             return setupSuccess(doctorsList, specialtyName, context);
           },
           doctorsError: () => setupError(),
-          orElse: () => const SizedBox.shrink(),
+          orElse: () => const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: DoctorsShimmerLoading(),
+          ),
         );
       },
     );
@@ -38,7 +42,8 @@ Widget setupSuccess(
   String specialtyName,
   BuildContext context,
 ) {
-  return Expanded(
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20),
     child: Column(
       children: [
         DoctorsSpecialitySeeAll(
@@ -58,7 +63,6 @@ Widget setupSuccess(
             specialtyName: specialtyName,
           ),
         ),
-
       ],
     ),
   );

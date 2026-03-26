@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/helpers/enums.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 
 class AppointmentEmptyState extends StatelessWidget {
@@ -28,7 +28,7 @@ class AppointmentEmptyState extends StatelessWidget {
             height: 56.h,
             width: 56.w,
             colorFilter: const ColorFilter.mode(
-              ColorsManager.lightGray,
+              AppColors.strokeGray,
               BlendMode.srcIn,
             ),
           ),

@@ -1,5 +1,5 @@
-import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
-import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_item.dart';
+import 'package:mediqa/features/home/data/models/specializations_response_model.dart';
+import 'package:mediqa/features/home/ui/widgets/specializations_list/speciality_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,4 +1,4 @@
-import 'package:docdoc/core/theme/colors_manager.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
@@ -18,13 +18,13 @@ class AppShimmerLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: ColorsManager.lightGray,
-      highlightColor: Colors.white,
+      baseColor: AppColors.strokeGray,
+      highlightColor: AppColors.bgCard,
       child: Container(
         width: width ?? double.infinity,
         height: height ?? 100.h,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.bgCard,
           borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
         ),
       ),

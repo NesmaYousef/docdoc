@@ -29,7 +29,7 @@ class AppointmentErrorWidget extends StatelessWidget {
           verticalSpace(12),
           TextButton(
             onPressed: onRetry,
-            child: Text('Try Again', style: TextStyles.font14BlueSemiBold),
+            child: Text('Try Again', style: TextStyles.font14PrimarySemiBold),
           ),
         ],
       ),

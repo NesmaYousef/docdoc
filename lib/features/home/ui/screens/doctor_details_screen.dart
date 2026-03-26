@@ -1,11 +1,11 @@
-import 'package:docdoc/core/helpers/spacing.dart';
-import 'package:docdoc/core/theme/colors_manager.dart';
-import 'package:docdoc/core/theme/text_styles.dart';
-import 'package:docdoc/core/widgets/app_text_button.dart';
-import 'package:docdoc/core/widgets/custom_app_bar.dart';
-import 'package:docdoc/core/routing/routes.dart';
-import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
-import 'package:docdoc/features/home/ui/widgets/doctors_list/doctors_list_view_item.dart';
+import 'package:mediqa/core/helpers/spacing.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
+import 'package:mediqa/core/theme/text_styles.dart';
+import 'package:mediqa/core/widgets/app_text_button.dart';
+import 'package:mediqa/core/widgets/custom_app_bar.dart';
+import 'package:mediqa/core/routing/routes.dart';
+import 'package:mediqa/features/home/data/models/specializations_response_model.dart';
+import 'package:mediqa/features/home/ui/widgets/doctors_list/doctors_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,7 +64,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen>
             child: AppTextButton(
               buttonText: 'Make An Appointment',
               textStyle: TextStyles.font16WhiteSemiBold,
-              backgroundColor: ColorsManager.mainBlue,
+              backgroundColor: AppColors.primary,
               onPressed: () {
                 Navigator.pushNamed(
                   context,
@@ -86,11 +86,11 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen>
         children: [
           TabBar(
             controller: _tabController,
-            labelColor: ColorsManager.mainBlue,
-            unselectedLabelColor: ColorsManager.gray,
-            labelStyle: TextStyles.font14WhiteSemiBold,
-            unselectedLabelStyle: TextStyles.font14DarkBlueMedium,
-            indicatorColor: ColorsManager.mainBlue,
+            labelColor: AppColors.primary,
+            unselectedLabelColor: AppColors.textGray,
+            labelStyle: TextStyles.font14PrimarySemiBold,
+            unselectedLabelStyle: TextStyles.font14DarkMedium,
+            indicatorColor: AppColors.primary,
             indicatorWeight: 2.5,
             indicatorSize: TabBarIndicatorSize.tab,
             tabs: const [
@@ -98,7 +98,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen>
               Tab(text: 'Location'),
             ],
           ),
-          Container(height: 1, color: ColorsManager.lightGray.withOpacity(0.3)),
+          Container(height: 1, color: AppColors.strokeGray.withValues(alpha: 0.3)),
         ],
       ),
     );
@@ -126,7 +126,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('About me', style: TextStyles.font12DarkBlueRegular),
+        Text('About me', style: TextStyles.font12DarkRegular),
         verticalSpace(8),
         Text(
           '${widget.doctorModel?.name ?? 'Doctor'} is the top most ${widget.doctorModel?.degree ?? 'specialist'} in Christ Hospital at London, has achieved several awards for her wonderful contribution in medical field, available for private consultation.',

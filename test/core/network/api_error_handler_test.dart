@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:docdoc/core/network/api_error_handler.dart';
+import 'package:mediqa/core/network/api_error_handler.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

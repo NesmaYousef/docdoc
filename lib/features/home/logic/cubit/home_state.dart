@@ -1,4 +1,4 @@
-import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
+import 'package:mediqa/features/home/data/models/specializations_response_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/network/api_error_model.dart';

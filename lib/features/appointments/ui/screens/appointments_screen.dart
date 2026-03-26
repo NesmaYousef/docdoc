@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../logic/cubit/appointments_view_cubit.dart';
@@ -58,7 +58,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen>
                     current is AppointmentsViewError,
                 builder: (context, state) => state.maybeWhen(
                   loading: () => const Center(
-                    child: CircularProgressIndicator(color: ColorsManager.mainBlue),
+                    child: CircularProgressIndicator(color: AppColors.primary),
                   ),
                   error: (error) => AppointmentErrorWidget(
                     message: error.getAllErrorMessages(),
@@ -87,11 +87,11 @@ class _AppointmentsScreenState extends State<AppointmentsScreen>
         children: [
           TabBar(
             controller: _tabController,
-            labelColor: ColorsManager.mainBlue,
-            unselectedLabelColor: ColorsManager.gray,
-            labelStyle: TextStyles.font14BlueSemiBold,
+            labelColor: AppColors.primary,
+            unselectedLabelColor: AppColors.textGray,
+            labelStyle: TextStyles.font14PrimarySemiBold,
             unselectedLabelStyle: TextStyles.font14GrayRegular,
-            indicatorColor: ColorsManager.mainBlue,
+            indicatorColor: AppColors.primary,
             indicatorWeight: 2.5,
             indicatorSize: TabBarIndicatorSize.tab,
             tabs: const [
@@ -100,7 +100,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen>
               Tab(text: 'Cancelled'),
             ],
           ),
-          Container(height: 1, color: ColorsManager.lightGray.withOpacity(0.3)),
+          Container(height: 1, color: AppColors.strokeGray.withValues(alpha: 0.3)),
         ],
       ),
     );

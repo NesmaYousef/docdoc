@@ -1,13 +1,13 @@
-import 'package:docdoc/core/helpers/extensions.dart';
-import 'package:docdoc/core/routing/routes.dart';
-import 'package:docdoc/features/home/ui/widgets/home/home_top_bar.dart';
-import 'package:docdoc/features/home/ui/widgets/specializations_list/specializations_bloc_builder.dart';
+import 'package:mediqa/core/helpers/extensions.dart';
+import 'package:mediqa/core/routing/routes.dart';
+import 'package:mediqa/features/home/ui/widgets/home/home_top_bar.dart';
+import 'package:mediqa/features/home/ui/widgets/specializations_list/specializations_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../logic/cubit/home_cubit.dart';
-import '../widgets/home/doctor_blue_container.dart';
+import '../widgets/home/hero_booking_card.dart';
 import '../widgets/doctors_list/doctors_bloc_builder.dart';
 import '../widgets/home/doctors_speciality_see_all.dart';
 
@@ -16,27 +16,37 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<HomeCubit>()..getSpecializations(),
+    return BlocProvider.value(
+      value: getIt<HomeCubit>()..getSpecializations(),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: Container(
+          child: SizedBox(
             width: double.infinity,
-            margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HomeTopBar(),
-                const DoctorBlueContainer(),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  child: HomeTopBar(),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: HeroBookingCard(),
+                ),
                 verticalSpace(24),
-                DoctorsSpecialitySeeAll(
-                  onTap: () => context.pushNamed(Routes.specializationsScreen),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: DoctorsSpecialitySeeAll(
+                    onTap: () => context.pushNamed(Routes.specializationsScreen),
+                  ),
                 ),
                 verticalSpace(4),
                 const SpecializationsBlocBuilder(),
                 verticalSpace(14),
-                const DoctorsBlocBuilder(),
+                const Expanded(
+                  child: DoctorsBlocBuilder(),
+                ),
               ],
             ),
           ),

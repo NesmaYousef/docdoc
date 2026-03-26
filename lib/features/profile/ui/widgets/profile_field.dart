@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 
 class ProfileField extends StatelessWidget {
@@ -29,7 +30,7 @@ class ProfileField extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.r),
-            border: Border.all(color: const Color(0xffECECEC)),
+            border: Border.all(color: AppColors.strokeGray),
           ),
           child: Row(
             children: [
@@ -37,7 +38,7 @@ class ProfileField extends StatelessWidget {
               Expanded(
                 child: Text(
                   value,
-                  style: TextStyles.font14DarkBlueMedium,
+                  style: TextStyles.font14DarkMedium,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

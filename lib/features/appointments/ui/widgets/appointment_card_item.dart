@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/helpers/enums.dart';
+import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../data/models/appointments_response_model.dart';
-import 'package:docdoc/core/helpers/extensions/date_extension.dart';
+import 'package:mediqa/core/helpers/extensions/date_extension.dart';
 
 class AppointmentCardItem extends StatelessWidget {
   final AppointmentModel appointment;
@@ -25,11 +26,11 @@ class AppointmentCardItem extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 16.h),
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.bgCard,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.textDark.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -40,7 +41,7 @@ class AppointmentCardItem extends StatelessWidget {
         children: [
           _DoctorInfo(appointment: appointment),
           verticalSpace(16),
-          const Divider(height: 1, color: ColorsManager.lighterGray),
+          const Divider(height: 1, color: AppColors.strokeGray),
           verticalSpace(16),
           _TimeRow(appointment: appointment),
         ],
@@ -59,28 +60,31 @@ class _DoctorInfo extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 50.w,
-          height: 50.h,
+          width: 72.w,
+          height: 72.h,
           decoration: BoxDecoration(
-            color: ColorsManager.lightBlue.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(8.r),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(16.r),
+            color: AppColors.primarySurface,
           ),
           child: Center(
-            child: SvgPicture.asset(
-              'assets/svgs/docdoc_logo.svg',
-              width: 32.w,
-              height: 32.h,
+            child: Text(
+              appointment.doctor?.name.initials ?? 'D',
+              style: TextStyles.font24PrimaryBold.copyWith(
+                color: AppColors.primary,
+                fontSize: 28.sp,
+              ),
             ),
           ),
         ),
-        horizontalSpace(12),
+        horizontalSpace(16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 appointment.doctor?.name ?? 'Doctor Name',
-                style: TextStyles.font14DarkBlueMedium,
+                style: TextStyles.font14DarkMedium,
               ),
               verticalSpace(4),
               Text(
@@ -105,7 +109,7 @@ class _TimeRow extends StatelessWidget {
     return Row(
       children: [
         Icon(Icons.calendar_today_outlined,
-            size: 16.sp, color: ColorsManager.gray),
+            size: 16.sp, color: AppColors.textGray),
         horizontalSpace(8),
         Text(
           appointment.appointmentTime.readableDate,

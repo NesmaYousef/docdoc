@@ -13,15 +13,17 @@ class AppointmentsViewCubit extends Cubit<AppointmentsViewState> {
   void getAppointments() async {
     emit(const AppointmentsViewState.loading());
     final response = await _appointmentsRepo.getAllAppointments();
-    response.when(
-      success: (appointments) {
-        emit(AppointmentsViewState.success(
-          appointments.whereType<AppointmentModel>().toList(),
-        ));
-      },
-      failure: (apiErrorModel) {
-        emit(AppointmentsViewState.error(apiErrorModel));
-      },
-    );
+    if (!isClosed) {
+      response.when(
+        success: (appointments) {
+          emit(AppointmentsViewState.success(
+            appointments.whereType<AppointmentModel>().toList(),
+          ));
+        },
+        failure: (apiErrorModel) {
+          emit(AppointmentsViewState.error(apiErrorModel));
+        },
+      );
+    }
   }
 }

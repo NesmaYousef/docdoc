@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../logic/cubit/profile_cubit.dart';
 import '../widgets/logout_bloc_listener.dart';
 import '../widgets/settings_tile.dart';
 
@@ -13,7 +17,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgCard,
       appBar: const CustomAppBar(title: 'Setting'),
       body: SingleChildScrollView(
         child: Padding(
@@ -45,8 +49,8 @@ class SettingsScreen extends StatelessWidget {
                 child: SettingsTile(
                   icon: Icons.logout,
                   title: 'Logout',
-                  textColor: const Color(0xffFF4C4C),
-                  iconColor: const Color(0xffFF4C4C),
+                  textColor: AppColors.error,
+                  iconColor: AppColors.error,
                   onTap: () => _showLogoutDialog(context),
                 ),
               ),
@@ -60,38 +64,70 @@ class SettingsScreen extends StatelessWidget {
   void _showLogoutDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (dialogContext) => AlertDialog(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        title: Text(
-          'Logout',
-          style: TextStyles.font18DarkBlueBold.copyWith(color: Colors.black),
-        ),
-        content: Text(
-          "You'll need to enter your username and password next time to sign in.",
-          style: TextStyles.font14GrayRegular,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext),
-            child: Text(
-              'Cancel',
-              style: TextStyles.font14DarkBlueMedium,
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(dialogContext);
-              context.read<ProfileCubit>().logout();
-            },
-            child: Text(
+      builder: (dialogContext) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            verticalSpace(24),
+            Text(
               'Logout',
-              style: TextStyles.font14DarkBlueMedium.copyWith(
-                color: const Color(0xffFF4C4C),
+              style: TextStyles.font16BlackBold,
+            ),
+            verticalSpace(12),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Text(
+                "You'll need to enter your username\nand password next time\nyou want to login",
+                textAlign: TextAlign.center,
+                style: TextStyles.font14GrayRegular.copyWith(height: 1.5),
               ),
             ),
-          ),
-        ],
+            verticalSpace(24),
+            const Divider(height: 1, color: AppColors.strokeGray),
+            IntrinsicHeight(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 16.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(16.r)),
+                        ),
+                      ),
+                      onPressed: () => Navigator.pop(dialogContext),
+                      child: Text(
+                        'Cancel',
+                        style: TextStyles.font14DarkMedium.copyWith(color: AppColors.primary),
+                      ),
+                    ),
+                  ),
+                  const VerticalDivider(width: 1, thickness: 1, color: AppColors.strokeGray),
+                  Expanded(
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 16.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(16.r)),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(dialogContext);
+                        context.read<ProfileCubit>().logout();
+                      },
+                      child: Text(
+                        'Logout',
+                        style: TextStyles.font14DarkMedium.copyWith(color: AppColors.error),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

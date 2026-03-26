@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.doctor_appointment_app"
+    namespace = "com.example.mediqa"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.doctor_appointment_app"
+        applicationId = "com.example.mediqa"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -48,7 +48,7 @@ android {
             resValue(
                 type = "string",
                 name = "app_name",
-                value = "docdoc development")
+                value = "Mediqa development")
         }
         create("production") {
             dimension = "default"
@@ -56,7 +56,7 @@ android {
             resValue(
                 type = "string",
                 name = "app_name",
-                value = "docdoc")
+                value = "Mediqa")
         }
     }
 

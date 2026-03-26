@@ -1,7 +1,10 @@
-import 'package:docdoc/core/theme/colors_manager.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'package:mediqa/core/routing/routes.dart';
+import 'package:mediqa/core/helpers/extensions.dart';
 
 class MainFAB extends StatelessWidget {
   const MainFAB({super.key});
@@ -15,11 +18,11 @@ class MainFAB extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(28.r),
-        border: Border.all(color: Colors.white, width: 4.w),
-        color: ColorsManager.mainBlue,
+        border: Border.all(color: AppColors.bgCard, width: 4.w),
+        color: AppColors.primary,
         boxShadow: [
           BoxShadow(
-            color: ColorsManager.mainBlue.withValues(alpha: 0.3),
+            color: AppColors.primary.withValues(alpha: 0.3),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -30,14 +33,16 @@ class MainFAB extends StatelessWidget {
         shape: const CircleBorder(),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            context.pushNamed(Routes.searchScreen);
+          },
           child: Center(
             child: SvgPicture.asset(
               'assets/svgs/search.svg',
               width: 24.w,
               height: 24.w,
               colorFilter: const ColorFilter.mode(
-                Colors.white,
+                AppColors.bgCard,
                 BlendMode.srcIn,
               ),
             ),

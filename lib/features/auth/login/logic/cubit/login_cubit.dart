@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:docdoc/core/helpers/constants.dart';
-import 'package:docdoc/core/helpers/shared_pref_helper.dart';
-import 'package:docdoc/core/network/api_result.dart';
-import 'package:docdoc/core/network/dio_factory.dart';
-import 'package:docdoc/features/auth/login/data/models/login_request_body.dart';
-import 'package:docdoc/features/auth/login/data/repos/login_repo.dart';
+import 'package:mediqa/core/helpers/constants.dart';
+import 'package:mediqa/core/helpers/shared_pref_helper.dart';
+import 'package:mediqa/core/network/api_result.dart';
+import 'package:mediqa/core/network/dio_factory.dart';
+import 'package:mediqa/features/auth/login/data/models/login_request_body.dart';
+import 'package:mediqa/features/auth/login/data/repos/login_repo.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'login_state.dart';

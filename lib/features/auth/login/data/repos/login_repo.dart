@@ -1,8 +1,8 @@
-import 'package:docdoc/core/network/api_error_handler.dart';
-import 'package:docdoc/core/network/api_result.dart';
-import 'package:docdoc/core/network/api_service.dart';
-import 'package:docdoc/features/auth/login/data/models/login_request_body.dart';
-import 'package:docdoc/features/auth/login/data/models/login_response.dart';
+import 'package:mediqa/core/network/api_error_handler.dart';
+import 'package:mediqa/core/network/api_result.dart';
+import 'package:mediqa/core/network/api_service.dart';
+import 'package:mediqa/features/auth/login/data/models/login_request_body.dart';
+import 'package:mediqa/features/auth/login/data/models/login_response.dart';
 
 class LoginRepo {
   final ApiServices _apiService;

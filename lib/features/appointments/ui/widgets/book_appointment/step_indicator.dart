@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 
 class StepIndicator extends StatelessWidget {
@@ -29,24 +29,24 @@ class StepIndicator extends StatelessWidget {
     bool isUpcoming = step > currentStep;
 
     Color circleColor = isCompleted
-        ? ColorsManager.successGreen
-        : (isActive ? ColorsManager.mainBlue : ColorsManager.unselectedDateCardBg);
+        ? AppColors.success
+        : (isActive ? AppColors.primary : AppColors.bgSurface);
     Color borderColor = isCompleted
-        ? ColorsManager.successGreen
-        : (isActive ? ColorsManager.mainBlue : ColorsManager.unselectedDateCardBg);
+        ? AppColors.success
+        : (isActive ? AppColors.primary : AppColors.bgSurface);
     Color textColor = isUpcoming
-        ? Colors.white
-        : (isActive || isCompleted ? Colors.white : ColorsManager.gray);
+        ? AppColors.bgCard
+        : (isActive || isCompleted ? AppColors.bgCard : AppColors.textGray);
 
     Color labelColor = isCompleted
-        ? ColorsManager.successGreen
-        : (isActive ? Colors.black : ColorsManager.mediumGray);
+        ? AppColors.success
+        : (isActive ? AppColors.textDark : AppColors.textGray);
 
     // Line logic: 
     // - Green between completed steps and towards an active step.
     // - Gray towards an upcoming step.
-    Color lineColorBefore = isCompleted || isActive ? ColorsManager.successGreen : ColorsManager.lighterGray;
-    Color lineColorAfter = isCompleted ? ColorsManager.successGreen : ColorsManager.lighterGray;
+    Color lineColorBefore = isCompleted || isActive ? AppColors.success : AppColors.strokeGray;
+    Color lineColorAfter = isCompleted ? AppColors.success : AppColors.strokeGray;
 
     return Column(
       children: [
@@ -75,7 +75,7 @@ class StepIndicator extends StatelessWidget {
               ),
               child: Center(
                 child: isCompleted
-                    ? Icon(Icons.check, color: Colors.white, size: 16.w)
+                    ? Icon(Icons.check, color: AppColors.bgCard, size: 16.w)
                     : Text(
                         '$step',
                         style: TextStyles.font14WhiteSemiBold.copyWith(

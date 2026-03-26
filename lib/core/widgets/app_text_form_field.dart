@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theme/colors_manager.dart';
+import '../theme/app_colors.dart';
 import '../theme/text_styles.dart';
 
 class AppTextFormField extends StatelessWidget {
@@ -42,7 +42,7 @@ class AppTextFormField extends StatelessWidget {
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
-                color: ColorsManager.mainBlue,
+                color: AppColors.primary,
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(16.0),
@@ -50,21 +50,21 @@ class AppTextFormField extends StatelessWidget {
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
-                color: ColorsManager.lighterGray,
+                color: AppColors.strokeGray,
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(16.0),
             ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.red,
+            color: AppColors.error,
             width: 1.3,
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.red,
+            color: AppColors.error,
             width: 1.3,
           ),
           borderRadius: BorderRadius.circular(16.0),
@@ -72,11 +72,11 @@ class AppTextFormField extends StatelessWidget {
         hintStyle: hintStyle ?? TextStyles.font14LightGrayRegular,
         hintText: hintText,
         suffixIcon: suffixIcon,
-        fillColor: backgroundColor ?? ColorsManager.moreLightGray,
+        fillColor: backgroundColor ?? AppColors.bgSurface,
         filled: true,
       ),
       obscureText: isObscureText ?? false,
-      style: TextStyles.font14DarkBlueMedium,
+      style: TextStyles.font14DarkMedium,
       validator: (value) {
         return validator(value);
       },

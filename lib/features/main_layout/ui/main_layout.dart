@@ -1,6 +1,6 @@
-import 'package:docdoc/features/main_layout/ui/widgets/main_fab.dart';
+import 'package:mediqa/features/main_layout/ui/widgets/main_fab.dart';
 import 'package:flutter/material.dart';
-import 'package:docdoc/features/main_layout/ui/widgets/custom_bottom_nav_bar.dart';
+import 'package:mediqa/features/main_layout/ui/widgets/custom_bottom_nav_bar.dart';
 import '../../appointments/ui/screens/appointments_screen.dart';
 import '../../home/ui/screens/home_screen.dart';
 import '../../profile/ui/screens/profile_screen.dart';
@@ -35,15 +35,26 @@ class _MainLayoutState extends State<MainLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      body: IndexedStack(index: currentIndex, children: _screens),
-      floatingActionButton: MainFAB(),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: currentIndex,
-        onTap: _onNavTap,
+    return PopScope(
+      canPop: currentIndex == 0,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        if (currentIndex != 0) {
+          setState(() {
+            currentIndex = 0;
+          });
+        }
+      },
+      child: Scaffold(
+        extendBody: true,
+        body: IndexedStack(index: currentIndex, children: _screens),
+        floatingActionButton: MainFAB(),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: CustomBottomNavBar(
+          currentIndex: currentIndex,
+          onTap: _onNavTap,
+        ),
       ),
     );
   }

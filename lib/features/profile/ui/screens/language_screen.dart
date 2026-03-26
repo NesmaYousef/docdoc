@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../widgets/profile_save_button.dart';
@@ -31,7 +31,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgCard,
       appBar: const CustomAppBar(title: 'Language'),
       body: Column(
         children: [
@@ -41,9 +41,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
               decoration: InputDecoration(
                 hintText: 'Search',
                 hintStyle: TextStyles.font14GrayRegular,
-                prefixIcon: const Icon(Icons.search, color: Colors.grey),
+                prefixIcon: const Icon(Icons.search, color: AppColors.textGray),
                 filled: true,
-                fillColor: const Color(0xffF5F5F5),
+                fillColor: AppColors.bgSurface,
                 contentPadding: EdgeInsets.symmetric(vertical: 12.h),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.r),
@@ -60,11 +60,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 final lang = _languages[i];
                 return RadioListTile<String>(
                   title: Text(lang,
-                      style: TextStyles.font14DarkBlueMedium
-                          .copyWith(color: Colors.black87)),
+                      style: TextStyles.font14DarkMedium
+                          .copyWith(color: AppColors.textDark)),
                   value: lang,
                   groupValue: _selected,
-                  activeColor: ColorsManager.mainBlue,
+                  activeColor: AppColors.primary,
                   onChanged: (v) => setState(() => _selected = v!),
                 );
               },

@@ -1,7 +1,9 @@
-import 'package:docdoc/core/theme/text_styles.dart';
+import 'package:mediqa/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../core/helpers/spacing.dart';
 
 class DoctorImageAndText extends StatelessWidget {
   const DoctorImageAndText({super.key});
@@ -11,7 +13,7 @@ class DoctorImageAndText extends StatelessWidget {
     return Stack(
       children: [
         SvgPicture.asset(
-          'assets/svgs/docdoc_logo_low_opacity.svg',
+          'assets/svgs/mediqa_logo_low_opacity.svg',
 
         ),
         Container(
@@ -34,13 +36,26 @@ class DoctorImageAndText extends StatelessWidget {
             right: 0,
             child:
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 4.0.w),
-              child: Text('Best Doctor\n Appointment App',
-                textAlign: TextAlign.center,
-                style: TextStyles.font32BlueBold.copyWith(
-                  height: 1.4,
-                ),
+              padding:  EdgeInsets.symmetric(horizontal: 16.0.w),
+              child:
+              Column(
+                children: [
+                  Text(
+                    'Your health,\nyour schedule.',
+                    style: TextStyles.font24DarkBold.copyWith(height: 1.3),
+                    textAlign: TextAlign.center,
+                  ),
+                  verticalSpace(12),
+                  Text(
+                    'Book appointments with top doctors nearby — fast, simple, and stress-free.',
+                    style: TextStyles.font14GrayRegular.copyWith(
+                      height: 1.6,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
+
             ), ),
       ]
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 
 class SettingsSwitchTile extends StatelessWidget {
@@ -24,12 +24,12 @@ class SettingsSwitchTile extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.black87),
+            style: TextStyles.font14DarkMedium.copyWith(color: AppColors.textDark),
           ),
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: ColorsManager.mainBlue,
+            activeColor: AppColors.primary,
           ),
         ],
       ),

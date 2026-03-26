@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 
@@ -11,7 +11,7 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgCard,
       appBar: const CustomAppBar(title: 'Payment'),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
@@ -32,8 +32,8 @@ class PaymentScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: ColorsManager.mainBlue,
-        child: const Icon(Icons.add, color: Colors.white),
+        backgroundColor: AppColors.primary,
+        child: const Icon(Icons.add, color: AppColors.bgCard),
       ),
     );
   }
@@ -44,10 +44,10 @@ class PaymentScreen extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 16.h),
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.bgCard,
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
-          color: isDefault ? ColorsManager.mainBlue : const Color(0xffECECEC),
+          color: isDefault ? AppColors.primary : AppColors.strokeGray,
           width: 1,
         ),
       ),
@@ -56,23 +56,23 @@ class PaymentScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(8.w),
             decoration: BoxDecoration(
-              color: const Color(0xffF9FAFB),
+              color: AppColors.bgSurface,
               borderRadius: BorderRadius.circular(8.r),
             ),
-            child: Icon(Icons.credit_card, color: ColorsManager.mainBlue),
+            child: Icon(Icons.credit_card, color: AppColors.primary),
           ),
           SizedBox(width: 16.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: TextStyles.font14DarkBlueMedium),
+                Text(title, style: TextStyles.font14DarkMedium),
                 Text(subtitle, style: TextStyles.font12GrayRegular),
               ],
             ),
           ),
           if (isDefault)
-            const Icon(Icons.check_circle, color: ColorsManager.mainBlue),
+            const Icon(Icons.check_circle, color: AppColors.primary),
         ],
       ),
     );

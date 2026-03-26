@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
 
 class ProfileHeaderBackground extends StatelessWidget {
   const ProfileHeaderBackground({super.key});
@@ -8,9 +9,9 @@ class ProfileHeaderBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 121.h, // Adjusted to achieve the perfect avatar overlap
+      height: 120.h,
       decoration: const BoxDecoration(
-        color: Color(0xff247CFF),
+        color: AppColors.primary,
       ),
     );
   }

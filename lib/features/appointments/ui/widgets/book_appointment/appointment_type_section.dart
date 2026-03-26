@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 
 class AppointmentTypeSection extends StatelessWidget {
@@ -27,16 +27,16 @@ class AppointmentTypeSection extends StatelessWidget {
           icon: Icons.person_outline,
           title: 'In Person',
           value: 'In Person',
-          iconColor: ColorsManager.mainBlue,
-          bgColor: ColorsManager.mainBlue.withOpacity(0.1),
+          iconColor: AppColors.primary,
+          bgColor: AppColors.primary.withOpacity(0.1),
         ),
         SizedBox(height: 12.h),
         _buildTypeOption(
           icon: Icons.videocam_outlined,
           title: 'Video Call',
           value: 'Video Call',
-          iconColor: ColorsManager.successGreen,
-          bgColor: ColorsManager.successGreen.withOpacity(0.1),
+          iconColor: AppColors.success,
+          bgColor: AppColors.success.withOpacity(0.1),
         ),
 
         SizedBox(height: 12.h),
@@ -44,8 +44,8 @@ class AppointmentTypeSection extends StatelessWidget {
           icon: Icons.call_outlined,
           title: 'Phone Call',
           value: 'Phone Call',
-          iconColor: Colors.orange,
-          bgColor: Colors.orange.withOpacity(0.1),
+          iconColor: AppColors.warning,
+          bgColor: AppColors.warning.withOpacity(0.1),
         ),
       ],
     );
@@ -68,7 +68,7 @@ class AppointmentTypeSection extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: isSelected ? ColorsManager.mainBlue : Colors.transparent,
+            color: isSelected ? AppColors.primary : Colors.transparent,
             width: 1,
           ),
           boxShadow: [
@@ -98,8 +98,8 @@ class AppointmentTypeSection extends StatelessWidget {
             Text(
               title,
               style: isSelected
-                  ? TextStyles.font14DarkBlueMedium
-                  : TextStyles.font14DarkBlueMedium.copyWith(color: ColorsManager.gray),
+                  ? TextStyles.font14DarkMedium
+                  : TextStyles.font14DarkMedium.copyWith(color: AppColors.textGray),
             ),
             const Spacer(),
             Container(
@@ -108,7 +108,7 @@ class AppointmentTypeSection extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isSelected ? ColorsManager.mainBlue : ColorsManager.lightGray,
+                  color: isSelected ? AppColors.primary : AppColors.strokeGray,
                   width: isSelected ? 6 : 1,
                 ),
               ),

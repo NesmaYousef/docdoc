@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:docdoc/core/theme/colors_manager.dart';
-import 'package:docdoc/features/profile/logic/cubit/profile_cubit.dart';
-import 'package:docdoc/features/profile/logic/cubit/profile_state.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
+import 'package:mediqa/features/profile/logic/cubit/profile_cubit.dart';
+import 'package:mediqa/features/profile/logic/cubit/profile_state.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -23,10 +23,10 @@ class CustomBottomNavBar extends StatelessWidget {
     return Container(
       height: 80.h,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.bgCard,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: AppColors.textDark.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -58,7 +58,7 @@ class CustomBottomNavBar extends StatelessWidget {
         child: SvgPicture.asset(
           'assets/svgs/$iconName.svg',
           colorFilter: ColorFilter.mode(
-            isActive ? ColorsManager.mainBlue : Colors.black,
+            isActive ? AppColors.primary : AppColors.textDark,
             BlendMode.srcIn,
           ),
           width: 24.w,
@@ -84,7 +84,7 @@ class CustomBottomNavBar extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: isActive ? ColorsManager.mainBlue : Colors.transparent,
+              color: isActive ? AppColors.primary : Colors.transparent,
               width: 2.w,
             ),
           ),
@@ -94,7 +94,7 @@ class CustomBottomNavBar extends StatelessWidget {
               final path = context.read<ProfileCubit>().avatarPath;
               return CircleAvatar(
                 radius: 14.r,
-                backgroundColor: ColorsManager.moreLighterGray,
+                backgroundColor: AppColors.bgSurface,
                 backgroundImage: (path != null && path.isNotEmpty)
                     ? FileImage(File(path)) as ImageProvider
                     : const AssetImage('assets/images/user_avatar.png'),

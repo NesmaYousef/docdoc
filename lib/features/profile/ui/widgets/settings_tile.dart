@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 
 class SettingsTile extends StatelessWidget {
@@ -40,7 +40,7 @@ class SettingsTile extends StatelessWidget {
               height: 40.w,
               decoration: BoxDecoration(
                 color: iconBackgroundColor ??
-                    (iconColor ?? ColorsManager.mainBlue).withOpacity(0.1),
+                    (iconColor ?? AppColors.primary).withOpacity(0.1),
                 shape: iconShape,
                 borderRadius: iconShape == BoxShape.rectangle
                     ? BorderRadius.circular(10.r)
@@ -48,7 +48,7 @@ class SettingsTile extends StatelessWidget {
               ),
               child: Icon(
                 icon,
-                color: iconColor ?? ColorsManager.mainBlue,
+                color: iconColor ?? AppColors.primary,
                 size: iconSize ?? 22.sp,
               ),
             ),
@@ -56,8 +56,8 @@ class SettingsTile extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: TextStyles.font14DarkBlueMedium.copyWith(
-                  color: textColor ?? Colors.black87,
+                style: TextStyles.font14DarkMedium.copyWith(
+                  color: textColor ?? AppColors.textDark,
                 ),
               ),
             ),
@@ -65,7 +65,7 @@ class SettingsTile extends StatelessWidget {
                 Icon(
                   Icons.arrow_forward_ios,
                   size: 14.sp,
-                  color: ColorsManager.gray,
+                  color: AppColors.textGray,
                 ),
           ],
         ),

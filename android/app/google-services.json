@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1056628636537:android:a4aca2edde1dd3347b4da8",
         "android_client_info": {
-          "package_name": "com.example.docdoc"
+          "package_name": "com.example.mediqa"
         }
       },
       "oauth_client": [],
@@ -28,7 +28,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1056628636537:android:180602ed87b9761d7b4da8",
         "android_client_info": {
-          "package_name": "com.example.doctor_appointment_app.development"
+          "package_name": "com.example.mediqa.development"
         }
       },
       "oauth_client": [],

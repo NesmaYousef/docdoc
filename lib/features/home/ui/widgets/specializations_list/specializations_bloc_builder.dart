@@ -1,12 +1,10 @@
-import 'package:docdoc/features/home/ui/widgets/doctors_list/doctors_shimmer_loading.dart';
-import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_list_view.dart';
-import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_list_shimmer_loading.dart';
-import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_grid_view.dart';
-import 'package:docdoc/features/home/ui/widgets/specializations_list/speciality_grid_shimmer_loading.dart';
+import 'package:mediqa/features/home/ui/widgets/specializations_list/speciality_list_view.dart';
+import 'package:mediqa/features/home/ui/widgets/specializations_list/speciality_list_shimmer_loading.dart';
+import 'package:mediqa/features/home/ui/widgets/specializations_list/speciality_grid_view.dart';
+import 'package:mediqa/features/home/ui/widgets/specializations_list/speciality_grid_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/helpers/spacing.dart';
 import '../../../logic/cubit/home_cubit.dart';
 import '../../../logic/cubit/home_state.dart';
 
@@ -45,15 +43,7 @@ class SpecializationsBlocBuilder extends StatelessWidget {
       return const SpecialityGridShimmerLoading();
     }
     // Horizontal list shimmer for home screen
-    return Expanded(
-      child: Column(
-        children: [
-          const SpecialityShimmerLoading(),
-          verticalSpace(8),
-          const Expanded(child: DoctorsShimmerLoading()),
-        ],
-      ),
-    );
+    return const SpecialityShimmerLoading();
   }
 
 

@@ -60,7 +60,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1056628636537',
     projectId: 'flutter-app-distrubution-7f2e9',
     storageBucket: 'flutter-app-distrubution-7f2e9.firebasestorage.app',
-    iosBundleId: 'com.example.docdoc',
+    iosBundleId: 'com.example.mediqa',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/app_text_button.dart';
-import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 import '../../../../home/data/models/specializations_response_model.dart';
 import '../../../../home/ui/widgets/doctors_list/doctors_list_view_item.dart';
@@ -50,8 +50,8 @@ class BookStep3Summary extends StatelessWidget {
             icon: Icons.person_outline,
             title: 'Appointment Type',
             subtitle: appointmentType,
-            iconColor: ColorsManager.successGreen,
-            backgroundColor: ColorsManager.successGreen.withOpacity(0.1),
+            iconColor: AppColors.success,
+            backgroundColor: AppColors.success.withOpacity(0.1),
           ),
 
           SizedBox(height: 24.h),
@@ -66,14 +66,14 @@ class BookStep3Summary extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.payment, color: ColorsManager.mainBlue),
+                  Icon(Icons.payment, color: AppColors.primary),
                   SizedBox(width: 12.w),
-                  Text(paymentMethod, style: TextStyles.font14DarkBlueMedium),
+                  Text(paymentMethod, style: TextStyles.font14DarkMedium),
                 ],
               ),
               Text(
                 'Change',
-                style: TextStyles.font13BlueRegular,
+                style: TextStyles.font13PrimaryRegular,
               )
             ],
           ),
@@ -84,7 +84,7 @@ class BookStep3Summary extends StatelessWidget {
           SizedBox(height: 12.h),
           _buildPriceRow('Tax', '\$${tax.toStringAsFixed(0)}'),
           SizedBox(height: 12.h),
-          const Divider(color: ColorsManager.lighterGray),
+          const Divider(color: AppColors.strokeGray),
           SizedBox(height: 12.h),
           _buildPriceRow('Payment Total', '\$${total.toStringAsFixed(0)}', isTotal: true),
           SizedBox(height: 48.h),
@@ -106,18 +106,18 @@ class BookStep3Summary extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(12.w),
           decoration: BoxDecoration(
-            color: backgroundColor ?? ColorsManager.moreLighterGray,
+            color: backgroundColor ?? AppColors.bgSurface,
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, color: iconColor ?? ColorsManager.mainBlue, size: 24.w),
+          child: Icon(icon, color: iconColor ?? AppColors.primary, size: 24.w),
         ),
         SizedBox(width: 16.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: TextStyles.font14DarkBlueMedium),
+            Text(title, style: TextStyles.font14DarkMedium),
             SizedBox(height: 4.h),
-            Text(subtitle, style: TextStyles.font12GrayRegular.copyWith(color: ColorsManager.gray)),
+            Text(subtitle, style: TextStyles.font12GrayRegular.copyWith(color: AppColors.textGray)),
           ],
         )
       ],
@@ -130,11 +130,11 @@ class BookStep3Summary extends StatelessWidget {
       children: [
         Text(
           label,
-          style: isTotal ? TextStyles.font14DarkBlueBold : TextStyles.font14GrayRegular,
+          style: isTotal ? TextStyles.font14DarkBold : TextStyles.font14GrayRegular,
         ),
         Text(
           amount,
-          style: isTotal ? TextStyles.font18DarkBlueBold : TextStyles.font14BlackRegular,
+          style: isTotal ? TextStyles.font18DarkBold : TextStyles.font14BlackRegular,
         ),
       ],
     );

@@ -1,5 +1,5 @@
-import 'package:docdoc/core/helpers/extensions/date_extension.dart';
-import 'package:docdoc/features/appointments/ui/widgets/book_appointment/step_indicator.dart';
+import 'package:mediqa/core/helpers/extensions/date_extension.dart';
+import 'package:mediqa/features/appointments/ui/widgets/book_appointment/step_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

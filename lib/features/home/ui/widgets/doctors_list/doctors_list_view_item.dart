@@ -1,12 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:docdoc/core/helpers/extensions.dart';
-import 'package:docdoc/core/routing/routes.dart';
+import 'package:mediqa/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shimmer/shimmer.dart';
 
+import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 import '../../../data/models/specializations_response_model.dart';
 
@@ -23,35 +21,35 @@ class DoctorsListViewItem extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 16.h),
+        padding: EdgeInsets.all(12.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CachedNetworkImage(
-              imageUrl:
-                  "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
-              progressIndicatorBuilder: (context, url, downloadProgress) {
-                return Shimmer.fromColors(
-                  baseColor: ColorsManager.lightGray,
-                  highlightColor: Colors.white,
-                  child: Container(
-                    width: 110.w,
-                    height: 120.h,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12.0),
-                      color: Colors.white,
-                    ),
-                  ),
-                );
-              },
-              imageBuilder: (context, imageProvider) => Container(
-                width: 110.w,
-                height: 120.h,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(12.0),
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
+            Container(
+              width: 72.w,
+              height: 72.h,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(16.r),
+                color: AppColors.primarySurface,
+              ),
+              child: Center(
+                child: Text(
+                  doctorsModel?.name.initials ?? 'D',
+                  style: TextStyles.font24PrimaryBold.copyWith(
+                    color: AppColors.primary,
+                    fontSize: 28.sp,
                   ),
                 ),
               ),
@@ -60,6 +58,7 @@ class DoctorsListViewItem extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     doctorsModel?.name ?? 'Name',
@@ -67,14 +66,14 @@ class DoctorsListViewItem extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
-                  verticalSpace(5),
+                  verticalSpace(6),
                   Text(
                     '${doctorsModel?.degree} | ${doctorsModel?.phone}',
                     style: TextStyles.font12GrayMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
-                  verticalSpace(5),
+                  verticalSpace(6),
                   Text(
                     '${doctorsModel?.email} ',
                     style: TextStyles.font12GrayMedium,

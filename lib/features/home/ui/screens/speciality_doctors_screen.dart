@@ -1,9 +1,9 @@
-import 'package:docdoc/core/helpers/spacing.dart';
-import 'package:docdoc/core/theme/colors_manager.dart';
-import 'package:docdoc/core/theme/text_styles.dart';
-import 'package:docdoc/core/widgets/custom_app_bar.dart';
-import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
-import 'package:docdoc/features/home/ui/widgets/doctors_list/doctors_list_view.dart';
+import 'package:mediqa/core/helpers/spacing.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
+import 'package:mediqa/core/theme/text_styles.dart';
+import 'package:mediqa/core/widgets/custom_app_bar.dart';
+import 'package:mediqa/features/home/data/models/specializations_response_model.dart';
+import 'package:mediqa/features/home/ui/widgets/doctors_list/doctors_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +20,7 @@ class SpecialityDoctorsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgCard,
       appBar: CustomAppBar(title: "$specialtyName Doctors", height: 70.h),
       body: SafeArea(
         child: Padding(
@@ -48,13 +48,13 @@ class SpecialityDoctorsScreen extends StatelessWidget {
     return Container(
       height: 48.h,
       decoration: BoxDecoration(
-        color: ColorsManager.moreLightGray,
+        color: AppColors.bgSurface,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(
         children: [
           horizontalSpace(16),
-          Icon(Icons.search, color: ColorsManager.gray, size: 24.sp),
+          Icon(Icons.search, color: AppColors.textGray, size: 24.sp),
           horizontalSpace(12),
           Text('Search', style: TextStyles.font14GrayRegular),
         ],

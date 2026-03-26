@@ -1,14 +1,14 @@
-import 'package:docdoc/core/helpers/constants.dart';
-import 'package:docdoc/core/theme/colors_manager.dart';
+import 'package:mediqa/core/helpers/constants.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:docdoc/core/routing/app_router.dart';
+import 'package:mediqa/core/routing/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/routing/routes.dart';
 
-class DocApp extends StatelessWidget {
+class MediqaApp extends StatelessWidget {
   final AppRouter appRouter;
-  const DocApp({super.key, required this.appRouter});
+  const MediqaApp({super.key, required this.appRouter});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class DocApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
-        title: 'Doc App',
+        title: 'Mediqa',
         theme: ThemeData(
           fontFamily: 'Inter',
           useMaterial3: true,
-          primaryColor: ColorsManager.mainBlue,
+          primaryColor: AppColors.primary,
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,

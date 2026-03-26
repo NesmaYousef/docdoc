@@ -1,7 +1,7 @@
-import 'package:docdoc/core/helpers/enums.dart';
-import 'package:docdoc/features/appointments/data/models/appointments_response_model.dart';
-import 'package:docdoc/features/appointments/ui/widgets/appointment_card_item.dart';
-import 'package:docdoc/features/appointments/ui/widgets/appointment_empty_state.dart';
+import 'package:mediqa/core/helpers/enums.dart';
+import 'package:mediqa/features/appointments/data/models/appointments_response_model.dart';
+import 'package:mediqa/features/appointments/ui/widgets/appointment_card_item.dart';
+import 'package:mediqa/features/appointments/ui/widgets/appointment_empty_state.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

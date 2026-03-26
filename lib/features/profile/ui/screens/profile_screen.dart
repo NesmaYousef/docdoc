@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/theme/colors_manager.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../widgets/profile_action_buttons.dart';
 import '../widgets/profile_header.dart';
@@ -17,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgCard,
       appBar: _buildAppBar(context),
       body: SingleChildScrollView(
         child: Stack(
@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 100.h),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.bgCard,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.r),
                   topRight: Radius.circular(30.r),
@@ -51,20 +51,22 @@ class ProfileScreen extends StatelessWidget {
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: ColorsManager.mainBlue,
+      backgroundColor: AppColors.primary,
       elevation: 0,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-        onPressed: onBack ?? () => Navigator.maybePop(context),
-      ),
+      leading: (onBack != null || Navigator.canPop(context))
+          ? IconButton(
+              icon: const Icon(Icons.arrow_back_ios, color: AppColors.bgCard),
+              onPressed: onBack ?? () => Navigator.maybePop(context),
+            )
+          : null,
       title: Text(
         'Profile',
-        style: TextStyles.font18DarkBlueBold.copyWith(color: Colors.white),
+        style: TextStyles.font18DarkBold.copyWith(color: AppColors.bgCard),
       ),
       centerTitle: true,
       actions: [
         IconButton(
-          icon: const Icon(Icons.settings_outlined, color: Colors.white),
+          icon: const Icon(Icons.settings_outlined, color: AppColors.bgCard),
           onPressed: () => Navigator.pushNamed(context, Routes.settings),
         ),
       ],

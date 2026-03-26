@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 
 class DoctorsSpecialitySeeAll extends StatelessWidget {
@@ -13,12 +15,15 @@ class DoctorsSpecialitySeeAll extends StatelessWidget {
       children: [
         Text(
           text ?? 'Doctor Speciality',
-          style: TextStyles.font18DarkBlueSemiBold,
+          style: TextStyles.font18DarkSemiBold,
         ),
         Spacer(),
         GestureDetector(
           onTap: onTap ?? () {},
-          child: Text('See All', style: TextStyles.font12BlueRegular),
+          child: Text(
+            'See All',
+            style: TextStyles.font12PrimaryRegular,
+          ),
         ),
       ],
     );

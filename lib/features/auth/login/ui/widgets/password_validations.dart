@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/theme/colors_manager.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/text_styles.dart';
 
 class PasswordValidations extends StatelessWidget {
@@ -41,16 +41,16 @@ class PasswordValidations extends StatelessWidget {
       children: [
         const CircleAvatar(
           radius: 2.5,
-          backgroundColor: ColorsManager.gray,
+          backgroundColor: AppColors.textGray,
         ),
         horizontalSpace(6),
         Text(
           text,
-          style: TextStyles.font13DarkBlueRegular.copyWith(
+          style: TextStyles.font13DarkRegular.copyWith(
             decoration: hasValidated ? TextDecoration.lineThrough : null,
-            decorationColor: Colors.green,
+            decorationColor: AppColors.success,
             decorationThickness: 2,
-            color: hasValidated ? ColorsManager.gray : ColorsManager.darkBlue,
+            color: hasValidated ? AppColors.textGray : AppColors.textDark,
           ),
         )
       ],

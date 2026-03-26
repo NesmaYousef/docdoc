@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:docdoc/core/helpers/extensions/date_extension.dart';
-import 'package:docdoc/core/theme/colors_manager.dart';
-import 'package:docdoc/core/theme/text_styles.dart';
+import 'package:mediqa/core/helpers/extensions/date_extension.dart';
+import 'package:mediqa/core/theme/app_colors.dart';
+import 'package:mediqa/core/theme/text_styles.dart';
 
 
 
@@ -59,7 +59,7 @@ class _DatePickerSectionState extends State<DatePickerSection> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Select Date', style: TextStyles.font16BlackBold),
+            Text('Select Date', style: TextStyles.font16BlackBold.copyWith(color: AppColors.textDark)),
             TextButton(
               onPressed: () async {
                 final DateTime? picked = await showDatePicker(
@@ -70,7 +70,7 @@ class _DatePickerSectionState extends State<DatePickerSection> {
                 );
                 if (picked != null) widget.onDateSelected(picked);
               },
-              child: Text('Set Manual', style: TextStyles.font13BlueRegular),
+              child: Text('Set Manual', style: TextStyles.font13PrimaryRegular),
             )
           ],
         ),
@@ -79,7 +79,7 @@ class _DatePickerSectionState extends State<DatePickerSection> {
           children: [
             InkWell(
               onTap: () => _scroll(false),
-              child: Icon(Icons.chevron_left, color: ColorsManager.gray, size: 24.w),
+              child: Icon(Icons.chevron_left, color: AppColors.textGray, size: 24.w),
             ),
             SizedBox(width: 8.w),
             Expanded(
@@ -100,8 +100,8 @@ class _DatePickerSectionState extends State<DatePickerSection> {
                         margin: EdgeInsets.only(right: 10.w),
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? ColorsManager.mainBlue
-                              : ColorsManager.unselectedDateCardBg,
+                              ? AppColors.primary
+                              : AppColors.bgSurface,
                           borderRadius: BorderRadius.circular(12.r),
                         ),
                         child: Column(
@@ -113,7 +113,7 @@ class _DatePickerSectionState extends State<DatePickerSection> {
                               style: isSelected
                                   ? TextStyles.font12WhiteSemiBold.copyWith(fontSize: 11.sp)
                                   : TextStyles.font12GrayRegular.copyWith(
-                                      color: ColorsManager.unselectedDateText,
+                                      color: AppColors.textGray,
                                       fontSize: 11.sp,
                                     ),
                             ),
@@ -126,8 +126,8 @@ class _DatePickerSectionState extends State<DatePickerSection> {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14.sp,
                                     )
-                                  : TextStyles.font14DarkBlueMedium.copyWith(
-                                      color: ColorsManager.unselectedDateText,
+                                  : TextStyles.font14DarkMedium.copyWith(
+                                      color: AppColors.textGray,
                                       fontSize: 14.sp,
                                     ),
                             ),
@@ -142,7 +142,7 @@ class _DatePickerSectionState extends State<DatePickerSection> {
             SizedBox(width: 8.w),
             InkWell(
               onTap: () => _scroll(true),
-              child: Icon(Icons.chevron_right, color: ColorsManager.gray, size: 24.w),
+              child: Icon(Icons.chevron_right, color: AppColors.textGray, size: 24.w),
             ),
           ],
         ),

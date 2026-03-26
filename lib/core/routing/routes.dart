@@ -3,10 +3,10 @@ class Routes {
   static const String loginScreen = '/loginScreen';
   static const String signupScreen = '/signupScreen';
   static const String mainLayout = '/mainLayout';
-  static const String homeScreen = 'homeScreen';
-  static const String specializationsScreen = 'specializationsScreen';
-  static const String specialityDoctorsScreen = 'specialityDoctorsScreen';
-  static const String doctorDetailsScreen = 'doctorDetailsScreen';
+  static const String homeScreen = '/homeScreen';
+  static const String specializationsScreen = '/specializationsScreen';
+  static const String specialityDoctorsScreen = '/specialityDoctorsScreen';
+  static const String doctorDetailsScreen = '/doctorDetailsScreen';
   static const String profile = '/profile';
   static const String settings = '/settings';
   static const String about = '/about';
@@ -20,4 +20,5 @@ class Routes {
   static const String faq = '/faq';
   static const String security = '/security';
   static const String language = '/language';
+  static const String searchScreen = '/searchScreen';
 }

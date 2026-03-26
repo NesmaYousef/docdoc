@@ -1,15 +1,16 @@
-import 'package:docdoc/core/di/dependency_injection.dart';
-import 'package:docdoc/core/routing/routes.dart';
-import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
-import 'package:docdoc/features/home/logic/cubit/home_cubit.dart';
-import 'package:docdoc/features/home/ui/screens/home_screen.dart';
-import 'package:docdoc/features/home/ui/screens/specializations_screen.dart';
-import 'package:docdoc/features/auth/login/logic/cubit/login_cubit.dart';
-import 'package:docdoc/features/main_layout/ui/main_layout.dart';
-import 'package:docdoc/features/auth/signup/logic/cubit/signup_cubit.dart';
+import 'package:mediqa/core/di/dependency_injection.dart';
+import 'package:mediqa/core/routing/routes.dart';
+import 'package:mediqa/features/home/data/models/specializations_response_model.dart';
+import 'package:mediqa/features/home/logic/cubit/home_cubit.dart';
+import 'package:mediqa/features/home/ui/screens/home_screen.dart';
+import 'package:mediqa/features/home/ui/screens/specializations_screen.dart';
+import 'package:mediqa/features/auth/login/logic/cubit/login_cubit.dart';
+import 'package:mediqa/features/main_layout/ui/main_layout.dart';
+import 'package:mediqa/features/auth/signup/logic/cubit/signup_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/search/ui/screens/search_screen.dart';
 import '../../features/home/ui/screens/doctor_details_screen.dart';
 import '../../features/home/ui/screens/speciality_doctors_screen.dart';
 import '../../features/auth/login/ui/screens/login_screen.dart';
@@ -35,10 +36,10 @@ class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {
     //This arguments to be passed to screens like this: (arguments as ClassName)
     final arguments = settings.arguments;
-
     switch (settings.name) {
+      case '/':
       case Routes.onboardingScreen:
-        return MaterialPageRoute(builder: (_) => OnboardingScreen());
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -57,8 +58,8 @@ class AppRouter {
 
       case Routes.mainLayout:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<ProfileCubit>()..getUserProfile(),
+          builder: (context) => BlocProvider.value(
+            value: getIt<ProfileCubit>()..getUserProfile(),
             child: const MainLayout(),
           ),
         );
@@ -68,11 +69,19 @@ class AppRouter {
           builder: (context)=> HomeScreen(),
         );
 
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: getIt<HomeCubit>(),
+            child: const SearchScreen(),
+          ),
+        );
+
       case Routes.specializationsScreen:
         return MaterialPageRoute(
           builder: (context) {
-            return BlocProvider(
-              create: (_) => getIt<HomeCubit>()..getSpecializations(),
+            return BlocProvider.value(
+              value: getIt<HomeCubit>(),
               child: const SpecializationsScreen(),
             );
           },
@@ -116,16 +125,16 @@ class AppRouter {
 
       case Routes.settings:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (_) => getIt<ProfileCubit>(),
+          builder: (_) => BlocProvider.value(
+            value: getIt<ProfileCubit>(),
             child: const SettingsScreen(),
           ),
         );
 
       case Routes.personalInformation:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (_) => getIt<ProfileCubit>()..getUserProfile(),
+          builder: (_) => BlocProvider.value(
+            value: getIt<ProfileCubit>(),
             child: const PersonalInformationScreen(),
           ),
         );

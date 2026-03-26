@@ -1,4 +1,4 @@
-import 'package:docdoc/core/helpers/extensions.dart';
+import 'package:mediqa/core/helpers/extensions.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'api_error_model.g.dart';
 
