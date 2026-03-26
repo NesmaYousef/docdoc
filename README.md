@@ -1,6 +1,6 @@
 # 🏥 Mediqa
 
-Mediqa (formerly DocApp) is a premium, high-performance medical appointment scheduling application built with Flutter. Designed with a strict adherence to **Clean Architecture** and SOLID principles, the application delivers a seamless, instant, and offline-capable user experience for browsing medical specializations, locating nearby doctors, and securely booking appointments.
+Mediqa  is a premium, high-performance medical appointment scheduling application built with Flutter. Designed with a strict adherence to **Clean Architecture** and SOLID principles, the application delivers a seamless, instant, and offline-capable user experience for browsing medical specializations, locating nearby doctors, and securely booking appointments.
 
 ---
 
@@ -8,8 +8,6 @@ Mediqa (formerly DocApp) is a premium, high-performance medical appointment sche
 
 ### 🚀 Ultra-Fast Offline Caching (Stale-While-Revalidate)
 Mediqa guarantees a **0ms loading delay** for returning users by implementing the industry-standard **Stale-While-Revalidate** caching pattern. 
-* Powered by the native **Hive Database** NoSQL key-value store.
-* The moment you open the app, your Home Screen, Search Results, and Profile data are instantly populated natively from local memory.
 * The application intelligently pings the API in the background—silently updating the UI if new data exists, while gracefully suppressing network errors if you are completely offline!
 
 ### 🏗️ Domain-Driven Design (Clean Architecture)
