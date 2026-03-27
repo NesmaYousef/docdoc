@@ -1,31 +1,17 @@
 # 🏥 Mediqa
 
-Mediqa (formerly DocApp) is a premium, high-performance medical appointment scheduling application built with Flutter. Designed with a strict adherence to **Clean Architecture** and SOLID principles, the application delivers a seamless, instant, and offline-capable user experience for browsing medical specializations, locating nearby doctors, and securely booking appointments.
+Mediqa  is a premium, high-performance medical appointment scheduling application built with Flutter. Designed with a strict adherence to **Clean Architecture** and SOLID principles, the application delivers a seamless, instant, and offline-capable user experience for browsing medical specializations, locating nearby doctors, and securely booking appointments.
 
 ---
 
 ## ✨ Features & Architecture Highlights
 
-### 🚀 Ultra-Fast Offline Caching (Stale-While-Revalidate)
-Mediqa guarantees a **0ms loading delay** for returning users by implementing the industry-standard **Stale-While-Revalidate** caching pattern. 
-* Powered by the native **Hive Database** NoSQL key-value store.
-* The moment you open the app, your Home Screen, Search Results, and Profile data are instantly populated natively from local memory.
-* The application intelligently pings the API in the background—silently updating the UI if new data exists, while gracefully suppressing network errors if you are completely offline!
-
-### 🏗️ Domain-Driven Design (Clean Architecture)
-The codebase uses a highly modular feature-driven folder structure ensuring absolute scalability for enterprise teams:
-* **UI Layer:** Exclusively handles rendering components, scalable custom Glassmorphism widgets, and routing.
-* **Logic Layer:** Employs **Cubit** (`flutter_bloc`) to strictly isolate UI business logic from networking tasks. 
-* **Data Layer:** Utilizes heavily segmented **Repositories** to broker data requests using generated code patterns.
-
-### 🌐 Secure Networking
-* Fully integrated with **Dio** and **Retrofit** to auto-generate heavily typed API endpoint scaffolding.
-* Centralized `ApiErrorHandler` gracefully handles all backend exception classes, mapped securely to clean, user-facing UI messages without crashing the main application thread.
-
-### 💉 Dependency Injection
-* Centralized **GetIt** service locators handle efficient instantiation of API Services and Cubits.
-* Employs state-sharing **LazySingletons** (e.g., `HomeCubit`, `ProfileCubit`) to surgically prevent redundant API fetching across completely different modules (like routing from Home to Settings to the Search Tab), drastically reducing network payloads.
-
+- ⚡ Zero-delay loading for returning users via intelligent caching
+- 🔒 Secure authentication with token-based authorization
+- 📱 Cross-platform support 
+- 🏗️ Clean Architecture with strict separation of concerns
+- 🎨 Modern UI/UX with Glassmorphism effects and custom animations
+- 🌐 Offline-first approach with background synchronization
 ---
 
 ## 🛠️ Technology Stack
